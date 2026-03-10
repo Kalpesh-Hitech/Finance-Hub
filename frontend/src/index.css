@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light dark;
+}
+
+/* src/index.css  — paste at the top, before Tailwind directives */
+
+
+/* ─── CSS Theme Tokens ─────────────────────────────────── */
+:root {
+  --primary:        #6366f1;
+  --primary-dark:   #4f46e5;
+  --accent:         #06b6d4;
+  --success:        #10b981;
+  --danger:         #ef4444;
+  --warning:        #f59e0b;
+
+  --bg:             #f8fafc;
+  --surface:        #ffffff;
+  --border:         #e2e8f0;
+  --text:           #0f172a;
+  --muted:          #64748b;
+
+  /* react-hot-toast light */
+  --toast-bg:       #ffffff;
+  --toast-color:    #0f172a;
+
+  --font-display:   'Playfair Display', serif;
+  --font-body:      'DM Sans', sans-serif;
+  --font-mono:      'JetBrains Mono', monospace;
+}
+
+.dark {
+  --bg:             #0b0f1a;
+  --surface:        #111827;
+  --border:         #1e293b;
+  --text:           #f1f5f9;
+  --muted:          #94a3b8;
+
+  /* react-hot-toast dark */
+  --toast-bg:       #1e293b;
+  --toast-color:    #f1f5f9;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar          { width: 6px; }
+::-webkit-scrollbar-track    { background: transparent; }
+::-webkit-scrollbar-thumb    { background: #cbd5e1; border-radius: 3px; }
+.dark ::-webkit-scrollbar-thumb { background: #334155; }

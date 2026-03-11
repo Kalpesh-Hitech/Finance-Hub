@@ -17,5 +17,8 @@ app.add_middleware(
     allow_methods=["*"],             
     allow_headers=["*"],             
 )
+@app.get("/health")
+def health():
+    return {"status": "ok"}
 app.include_router(router)
 app.include_router(financerouter,  dependencies=[Depends(get_current_user)])

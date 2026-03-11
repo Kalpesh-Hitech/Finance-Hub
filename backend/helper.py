@@ -32,18 +32,36 @@ def hash_password(password: str) -> str:
 
 
 
+
+from .config import settings 
+
 def send_otp_email(to_email: str, otp: str):
-    response = requests.post(
-        "https://api.resend.com/emails",
-        headers={"Authorization": f"Bearer {settings.RESEND_API_KEY}"},
-        json={
-            "from": settings.EMAIL_ADDRESS,
-            "to": to_email,
-            "subject": "Your OTP Verification Code",
-            "text": f"Your OTP code is: {otp}"
-        }
-    )
-    return response.status_code == 200
+    url = "https://api.brevo.com/v3/smtp/email"
+    headers = {
+        "accept": "application/json",
+        "api-key": settings.BREVO_API_KEY, # Use your real API key from settings
+        "content-type": "application/json"
+    }
+    payload = {
+        "sender": {
+            "name": "Team Manager App",  # <--- Put your App Name here
+            "email": settings.EMAIL_ADDRESS # <--- Must be your Brevo login email
+        },
+        "to": [{"email": to_email}],
+        "subject": "Your OTP Verification Code",
+        "htmlContent": f"""
+        <html>
+            <body style="font-family: Arial, sans-serif;">
+                <h2>Welcome!</h2>
+                <p>Your one-time password (OTP) is: <strong>{otp}</strong></p>
+                <p>This code will expire in 10 minutes.</p>
+            </body>
+        </html>
+        """
+    }
+    
+    response = requests.post(url, json=payload, headers=headers)
+    return response.json()
 
 
 def verify_password(palin_password: str, hashed_password: str) -> bool:

@@ -13,6 +13,7 @@ from database import get_db
 from sqlalchemy.orm import Session
 import requests
 import re
+from config import settings 
 
 
 def create_access_token(data: dict):
@@ -33,7 +34,6 @@ def hash_password(password: str) -> str:
 
 
 
-from .config import settings 
 
 def send_otp_email(to_email: str, otp: str):
     url = "https://api.brevo.com/v3/smtp/email"

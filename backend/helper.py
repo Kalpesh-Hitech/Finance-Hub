@@ -4,6 +4,7 @@ from config import settings
 from jose import jwt, JWTError
 import bcrypt
 import smtplib
+import socket
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from fastapi import Depends, HTTPException

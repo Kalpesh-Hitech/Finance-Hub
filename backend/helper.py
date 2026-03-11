@@ -11,6 +11,7 @@ from fastapi import Depends, HTTPException
 from fastapi.security import OAuth2PasswordBearer
 from database import get_db
 from sqlalchemy.orm import Session
+import requests
 import re
 
 
@@ -29,32 +30,20 @@ def hash_password(password: str) -> str:
     return hashed_password.decode("utf-8")
 
 
+
+
 def send_otp_email(to_email: str, otp: str):
-    subject = "Your OTP Verification Code"
-    body = f"Hello,\n\nYour OTP code is: {otp}\n\nThank you!"
-
-    msg = MIMEMultipart()
-    msg["From"] = settings.EMAIL_ADDRESS
-    msg["To"] = to_email
-    msg["Subject"] = subject
-    msg.attach(MIMEText(body, "plain"))
-
-    try:
-        # Force IPv4 to avoid Render's networking quirks
-        server = smtplib.SMTP(settings.SMTP_SERVER, settings.SMTP_PORT, timeout=10)
-        server.set_debuglevel(1)  # This will print the conversation to your Render logs
-        
-        server.ehlo()      # Identify yourself to the server
-        server.starttls()  # Secure the connection
-        server.ehlo()      # Re-identify on the secure connection
-        
-        server.login(settings.EMAIL_ADDRESS, settings.EMAIL_PASSWORD)
-        server.sendmail(settings.EMAIL_ADDRESS, to_email, msg.as_string())
-        server.quit()
-    except socket.error as e:
-        print(f"Socket error (Network Issue): {e}")
-    except Exception as e:
-        print(f"General SMTP error: {e}")
+    response = requests.post(
+        "https://api.resend.com/emails",
+        headers={"Authorization": f"Bearer {settings.RESEND_API_KEY}"},
+        json={
+            "from": settings.EMAIL_ADDRESS,
+            "to": to_email,
+            "subject": "Your OTP Verification Code",
+            "text": f"Your OTP code is: {otp}"
+        }
+    )
+    return response.status_code == 200
 
 
 def verify_password(palin_password: str, hashed_password: str) -> bool:

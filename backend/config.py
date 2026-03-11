@@ -10,7 +10,6 @@ class Settings(BaseSettings):
     SMTP_PORT: int
     EMAIL_ADDRESS: str
     EMAIL_PASSWORD: str
+    RESEND_API_KEY:str
     model_config = SettingsConfigDict(env_file=".env")
-
-
 settings = Settings()

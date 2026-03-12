@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 const MainLayout     = lazy(() => import("./Pages/MainDashboard"));
 const Login          = lazy(() => import("./Pages/Login"));
 const Signup         = lazy(() => import("./Pages/SignUp"));
-const VerifyEmail    = lazy(() => import("./Pages/VerifyEmail"));
 const ForgotPassword = lazy(() => import("./Pages/ForgetPassword"));
 const Home           = lazy(() => import("./Pages/Home"));
 const Transaction    = lazy(() => import("./Pages/Transaction"));
@@ -30,7 +29,6 @@ const App = () => (
           {/* Public */}
           <Route path="login"           element={<Login />} />
           <Route path="signup"          element={<Signup />} />
-          <Route path="verify-email"    element={<VerifyEmail />} />
           <Route path="forgot-password" element={<ForgotPassword />} />
 
           {/* Protected */}

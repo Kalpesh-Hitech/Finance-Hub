@@ -4,15 +4,11 @@ import api from "./axiosInstance";
 // ── Auth ──
 export const loginApi       = (data) => api.post("/signin", data);
 export const signupApi      = (data) => api.post("/signup", data);
-export const verifyEmailApi = (data) => api.post("/verifyemail", data);
 export const logoutApi      = ()     => Promise.resolve();
 
 // ── Password / Email ──
 export const changePasswordApi     = (data) => api.post("/change_password", data);
-export const requestChangeEmailApi = ()     => api.post("/request-change-email");
-export const changeEmailApi        = (data) => api.put("/change_email", data);
 export const forgetPasswordApi     = (data) => api.post("/forgetpassword", data);
-export const resetPasswordApi      = (data) => api.post("/reset_password", data);
 
 // ── Transactions ──
 export const getTransactionsApi   = ()     => api.get("/transactions");

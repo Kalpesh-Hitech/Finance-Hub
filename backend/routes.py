@@ -13,7 +13,6 @@ from helper import (
     create_access_token,
     get_current_user,
     hash_password,
-    send_otp_email,
     verify_password,
     is_valid_email,
 )
@@ -49,7 +48,6 @@ def signup(
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
-    background_tasks.add_task(send_otp_email, user.email, otp)
     return {"message": "User Created SuccessFully!!"}
 
 
@@ -73,22 +71,6 @@ def signin(user: UserCreate, db: Session = Depends(get_db)):
             # add more fields if your User model has them e.g. name, id
         }
     }
-
-@router.post("/verifyemail", response_model=dict)
-def api_verify_email(verifyotp: UserOtp, db: Session = Depends(get_db)):
-    db_user = db.query(User).filter(User.email == verifyotp.email).first()
-    
-    if not db_user:
-        raise HTTPException(status_code=404, detail="user is not exist!!")
-    
-    if db_user.otp != verifyotp.otp:
-        raise HTTPException(status_code=400, detail="otp is invalid")
-    
-    db_user.isvalid = True
-    db_user.otp = None          # ✅ Clear OTP after use
-    db.commit()
-    db.refresh(db_user)
-    return {"message": "email verified successfully"}
 
 
 @router.patch("/deactive")
@@ -118,46 +100,6 @@ def change_password(
     return {"password": "password badal gya hai"}
 
 
-@router.post("/request-change-email")
-def request_change_email(
-    background_tasks: BackgroundTasks,
-    user: User = Depends(get_current_user),
-    db: Session = Depends(get_db),
-):
-    db_email = db.query(User).filter(User.email == user.email).first()
-    if not db_email:
-        raise HTTPException(status_code=400, detail="this account is not exist!!")
-    if not user.is_active:
-        raise HTTPException(status_code=400, detail="this account is deactivated!!")
-    otp = "".join(random.choices(string.ascii_letters + string.digits, k=6))
-    db_email.otp = otp
-    db.commit()
-    db.refresh(db_email)
-    background_tasks.add_task(send_otp_email, user.email, otp)
-    return {"message": "For changing the email otp is generated SuccessFully!!"}
-
-
-@router.put("/change_email")
-def change_password(
-    new_info: ChangeEmail,
-    user: User = Depends(get_current_user),
-    db: Session = Depends(get_db),
-):
-    if not is_valid_email(new_info.email):
-        raise HTTPException(status_code=400, detail="email is not validated!!")
-    db_email = db.query(User).filter(User.email == user.email).first()
-    if not db_email:
-        raise HTTPException(status_code=400, detail="this account is not exist!!")
-    if not user.is_active:
-        raise HTTPException(status_code=400, detail="this account is deactivated!!")
-    if not (user.otp == new_info.otp):
-        raise HTTPException(status_code=400, detail="otp galat hai!!")
-    user.email = new_info.email
-    token = create_access_token({"sub": new_info.email})
-    db.commit()
-    return {"email": "email is changed!!", "token": token}
-
-
 @router.post("/forgetpassword")
 def forget_password(data: ForgetPassword, db: Session = Depends(get_db)):
     db_email = db.query(User).filter(User.email == data.email).first()
@@ -176,28 +118,6 @@ def forget_password(data: ForgetPassword, db: Session = Depends(get_db)):
         "reset token": db_email.reset_token,
         "expire": "please reset password in 15 minutes",
     }
-
-
-@router.post("/reset_password")
-def reset_password(
-    new_info: ResetPassword,
-    user: User = Depends(get_current_user),
-    db: Session = Depends(get_db),
-):
-    if not user.is_active:
-        raise HTTPException(status_code=400, detail="this account is deactivated!!")
-    if user.reset_token_expiry < datetime.utcnow():
-        user.reset_token = None
-        user.reset_token_expiry = None
-        db.commit()
-        raise HTTPException(status_code=400, detail="token is expired!!")
-    hashed_password = hash_password(new_info.new_password)
-    user.password = hashed_password
-    user.reset_token = None
-    user.reset_token_expiry = None
-    db.commit()
-    return {"password": "password badal gya hai"}
-
 
 
 

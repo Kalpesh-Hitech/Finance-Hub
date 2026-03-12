@@ -3,13 +3,10 @@ from models import User
 from config import settings
 from jose import jwt, JWTError
 import bcrypt
-from sendgrid import SendGridAPIClient
-from sendgrid.helpers.mail import Mail
 from fastapi import Depends, HTTPException
 from fastapi.security import OAuth2PasswordBearer
 from database import get_db
 from sqlalchemy.orm import Session
-import requests
 import re
 from config import settings 
 
@@ -28,28 +25,6 @@ def hash_password(password: str) -> str:
     hashed_password = bcrypt.hashpw(password.encode("utf-8"), salt)
     return hashed_password.decode("utf-8")
 
-
-def send_otp_email(to_email: str, otp: str):
-
-    message = Mail(
-        from_email=settings.EMAIL_ADDRESS,
-        to_emails=to_email,
-        subject="Your OTP Verification Code",
-        html_content=f"<h3>Your OTP is: <strong>{otp}</strong></h3>"
-    )
-
-    try:
-        sg = SendGridAPIClient(settings.SENDGRID_API_KEY)
-        response = sg.send(message)
-
-        return {
-            "status_code": response.status_code,
-            "otp": otp,
-            "message": "OTP email sent successfully"
-        }
-
-    except Exception as e:
-        return {"error": str(e)}
 
 def verify_password(palin_password: str, hashed_password: str) -> bool:
     return bcrypt.checkpw(

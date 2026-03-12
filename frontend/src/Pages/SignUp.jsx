@@ -21,7 +21,7 @@ const Signup = () => {
       await signupApi(values);
       toast.success("Account created! Check your email for the OTP. 📧");
       // Pass email so VerifyEmail page knows where OTP was sent
-      navigate("/verify-email", { state: { email: values.email } });
+      navigate("/login");
     } catch (err) {
       const msg = err.response?.data?.detail || err.response?.data?.message || "Registration failed. Try again.";
       toast.error(msg);

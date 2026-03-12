@@ -8,8 +8,7 @@ import {
   FiSave, FiEye, FiEyeOff, FiSend, FiCheck,
 } from "react-icons/fi";
 import { toast } from "react-hot-toast";
-import { setCredentials } from "../Context/ContextSlices/authReader";
-import { changePasswordApi, requestChangeEmailApi, changeEmailApi } from "../api/authApi";
+import { changePasswordApi } from "../api/authApi";
 
 const Section = ({ title, icon: Icon, children }) => (
   <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
@@ -21,17 +20,6 @@ const Section = ({ title, icon: Icon, children }) => (
   </div>
 );
 
-// const Toggle = ({ label, desc, value, onChange }) => (
-//   <div className="flex items-center justify-between py-3 border-b border-slate-100 dark:border-slate-800 last:border-0">
-//     <div>
-//       <p className="text-sm font-medium text-slate-800 dark:text-slate-200">{label}</p>
-//       {desc && <p className="text-xs text-slate-400 mt-0.5">{desc}</p>}
-//     </div>
-//     <button onClick={() => onChange(!value)} className={`relative w-11 h-6 rounded-full transition-colors ${value ? "bg-indigo-600" : "bg-slate-300 dark:bg-slate-700"}`}>
-//       <span className={`absolute top-1 w-4 h-4 bg-white rounded-full shadow transition-transform ${value ? "translate-x-6" : "translate-x-1"}`} />
-//     </button>
-//   </div>
-// );
 const Toggle = ({ label, desc, value, onChange }) => (
   <div className="flex items-center justify-between py-3 border-b border-slate-100 dark:border-slate-800 last:border-0">
     <div>
@@ -40,7 +28,7 @@ const Toggle = ({ label, desc, value, onChange }) => (
     </div>
 
     <button
-      type="button" // Important to prevent form submission if this is inside a form
+      type="button" 
       onClick={() => onChange(!value)}
       className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full transition-colors duration-200 ease-in-out outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 ${value ? "bg-indigo-600" : "bg-slate-300 dark:bg-slate-700"
         }`}
@@ -104,93 +92,14 @@ const ChangePasswordSection = () => {
   );
 };
 
-const ChangeEmailSection = () => {
-  const dispatch = useDispatch();
-  const { user, token } = useSelector((s) => s.auth);
-  const [otpSent, setOtpSent] = useState(false);
-  const [sending, setSending] = useState(false);
 
-  const sendOtp = async () => {
-    setSending(true);
-    try {
-      await requestChangeEmailApi();
-      setOtpSent(true);
-      toast.success("OTP sent to your current email! 📧");
-    } catch (err) {
-      toast.error(err.response?.data?.detail || "Failed to send OTP");
-    } finally { setSending(false); }
-  };
-
-  const formik = useFormik({
-    initialValues: { email: "", otp: "" },
-    validationSchema: Yup.object({
-      email: Yup.string().email("Invalid email").required("Required"),
-      otp: Yup.string().required("OTP is required"),
-    }),
-    onSubmit: async (values, { setSubmitting, resetForm }) => {
-      try {
-        const { data } = await changeEmailApi({ email: values.email, otp: values.otp });
-        dispatch(setCredentials({ user: { ...user, email: values.email }, token: data.token || token }));
-        toast.success("Email changed! ✅");
-        setOtpSent(false);
-        resetForm();
-      } catch (err) {
-        const msg = (err.response?.data?.detail || "").toLowerCase();
-        if (msg.includes("otp") || msg.includes("galat")) toast.error("Invalid OTP", { icon: "🔐" });
-        else toast.error(err.response?.data?.detail || "Failed to change email");
-      } finally { setSubmitting(false); }
-    },
-  });
-
-  return (
-    <Section title="Change Email" icon={FiMail}>
-      <div className="mb-4 flex items-center gap-3 p-3 bg-slate-50 dark:bg-slate-800 rounded-xl">
-        <span className="text-xs text-slate-500 dark:text-slate-400">Current:</span>
-        <span className="text-sm font-semibold text-slate-800 dark:text-slate-200">{user?.email || "—"}</span>
-      </div>
-      {!otpSent ? (
-        <button onClick={sendOtp} disabled={sending}
-          className="flex items-center gap-2 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-60 text-white rounded-xl text-sm font-semibold transition">
-          <FiSend size={14} />{sending ? "Sending OTP..." : "Send OTP to current email"}
-        </button>
-      ) : (
-        <form onSubmit={formik.handleSubmit} className="space-y-3">
-          <div className="flex items-center gap-2 text-xs text-emerald-600 dark:text-emerald-400 font-medium mb-1">
-            <FiCheck size={14} />OTP sent to {user?.email}
-          </div>
-          {[
-            { name: "email", type: "email", placeholder: "New email address", extra: "" },
-            { name: "otp", type: "text", placeholder: "Enter OTP", extra: "font-mono tracking-widest" },
-          ].map(({ name, type, placeholder, extra }) => (
-            <div key={name}>
-              <input name={name} type={type} placeholder={placeholder} maxLength={name === "otp" ? 6 : undefined}
-                className={`w-full px-4 py-2.5 rounded-xl border text-sm bg-slate-50 dark:bg-slate-800 dark:text-white outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition ${extra} ${formik.touched[name] && formik.errors[name] ? "border-red-400" : "border-slate-200 dark:border-slate-700"}`}
-                {...formik.getFieldProps(name)} />
-              {formik.touched[name] && formik.errors[name] && <p className="text-red-500 text-xs mt-1">{formik.errors[name]}</p>}
-            </div>
-          ))}
-          <div className="flex gap-2">
-            <button type="submit" disabled={formik.isSubmitting}
-              className="flex items-center gap-2 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-60 text-white rounded-xl text-sm font-semibold transition">
-              <FiSave size={14} />{formik.isSubmitting ? "Saving..." : "Change Email"}
-            </button>
-            <button type="button" onClick={() => { setOtpSent(false); formik.resetForm(); }}
-              className="px-4 py-2.5 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 rounded-xl text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition">
-              Cancel
-            </button>
-          </div>
-        </form>
-      )}
-    </Section>
-  );
-};
 
 const Settings = () => {
   const { user } = useSelector((s) => s.auth);
   const [notifs, setNotifs] = useState({ email: true, push: false, weekly: true });
 
   return (
-    <div className="space-y-5 max-w-2xl" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+    <div className="space-y-5 max-w-2xl mx-auto" style={{ fontFamily: "'DM Sans', sans-serif" }}>
       <div>
         <h1 className="text-2xl font-bold text-slate-900 dark:text-white" style={{ fontFamily: "'Playfair Display', serif" }}>Settings</h1>
         <p className="text-sm text-slate-500 dark:text-slate-400 mt-0.5">Manage your account</p>
@@ -210,7 +119,6 @@ const Settings = () => {
       </Section>
 
       <ChangePasswordSection />
-      <ChangeEmailSection />
 
       <Section title="Notifications" icon={FiBell}>
         <Toggle label="Email Notifications" desc="Transaction alerts" value={notifs.email} onChange={(v) => setNotifs({ ...notifs, email: v })} />

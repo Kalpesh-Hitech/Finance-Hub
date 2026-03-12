@@ -61,8 +61,6 @@ def signin(user: UserCreate, db: Session = Depends(get_db)):
         raise HTTPException(status_code=400, detail="Invalid Credential")
     if not verify_password(user.password, db_user.password):
         raise HTTPException(status_code=400, detail="Invalid Credential")
-    if not db_user.isvalid:
-        raise HTTPException(status_code=401, detail="please valid first")
     if not db_user.is_active:
         raise HTTPException(status_code=401, detail="this account is inactive")
 

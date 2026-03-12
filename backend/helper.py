@@ -3,10 +3,8 @@ from models import User
 from config import settings
 from jose import jwt, JWTError
 import bcrypt
-import smtplib
-import socket
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 from fastapi import Depends, HTTPException
 from fastapi.security import OAuth2PasswordBearer
 from database import get_db
@@ -31,38 +29,27 @@ def hash_password(password: str) -> str:
     return hashed_password.decode("utf-8")
 
 
-
-
-
-
 def send_otp_email(to_email: str, otp: str):
-    url = "https://api.brevo.com/v3/smtp/email"
-    headers = {
-        "accept": "application/json",
-        "api-key": settings.BREVO_API_KEY, # Use your real API key from settings
-        "content-type": "application/json"
-    }
-    payload = {
-        "sender": {
-            "name": "Team Manager App",  # <--- Put your App Name here
-            "email": settings.EMAIL_ADDRESS # <--- Must be your Brevo login email
-        },
-        "to": [{"email": to_email}],
-        "subject": "Your OTP Verification Code",
-        "htmlContent": f"""
-        <html>
-            <body style="font-family: Arial, sans-serif;">
-                <h2>Welcome!</h2>
-                <p>Your one-time password (OTP) is: <strong>{otp}</strong></p>
-                <p>This code will expire in 10 minutes.</p>
-            </body>
-        </html>
-        """
-    }
-    
-    response = requests.post(url, json=payload, headers=headers)
-    return response.json()
 
+    message = Mail(
+        from_email=settings.EMAIL_ADDRESS,
+        to_emails=to_email,
+        subject="Your OTP Verification Code",
+        html_content=f"<h3>Your OTP is: <strong>{otp}</strong></h3>"
+    )
+
+    try:
+        sg = SendGridAPIClient(settings.SENDGRID_API_KEY)
+        response = sg.send(message)
+
+        return {
+            "status_code": response.status_code,
+            "otp": otp,
+            "message": "OTP email sent successfully"
+        }
+
+    except Exception as e:
+        return {"error": str(e)}
 
 def verify_password(palin_password: str, hashed_password: str) -> bool:
     return bcrypt.checkpw(

@@ -1,0 +1,1455 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.gitignore
+alembic.ini
+alembic/env.py
+alembic/README
+alembic/script.py.mako
+alembic/versions/005579e83426_add_budget_and_transacation_tables.py
+alembic/versions/6245c29cc1c1_change_in_users.py
+alembic/versions/7022c43310dd_change_in_users.py
+alembic/versions/76fa4bba0d9c_created_user_table.py
+auth.py
+config.py
+database.py
+finance.py
+helper.py
+main.py
+models.py
+RequestModel.py
+requirement.txt
+ResponseModel.py
+routes.py
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".gitignore">
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[codz]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py.cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+#   For a library or package, you might want to ignore these files since the code is
+#   intended to run in multiple environments; otherwise, check them in:
+# .python-version
+
+# pipenv
+#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+#   However, in case of collaboration, if having platform-specific dependencies or dependencies
+#   having no cross-platform support, pipenv may install dependencies that don't work, or not
+#   install all needed dependencies.
+#Pipfile.lock
+
+# UV
+#   Similar to Pipfile.lock, it is generally recommended to include uv.lock in version control.
+#   This is especially recommended for binary packages to ensure reproducibility, and is more
+#   commonly ignored for libraries.
+#uv.lock
+
+# poetry
+#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
+#   This is especially recommended for binary packages to ensure reproducibility, and is more
+#   commonly ignored for libraries.
+#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
+#poetry.lock
+#poetry.toml
+
+# pdm
+#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
+#   pdm recommends including project-wide configuration in pdm.toml, but excluding .pdm-python.
+#   https://pdm-project.org/en/latest/usage/project/#working-with-version-control
+#pdm.lock
+#pdm.toml
+.pdm-python
+.pdm-build/
+
+# pixi
+#   Similar to Pipfile.lock, it is generally recommended to include pixi.lock in version control.
+#pixi.lock
+#   Pixi creates a virtual environment in the .pixi directory, just like venv module creates one
+#   in the .venv directory. It is recommended not to include this directory in version control.
+.pixi
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.envrc
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# PyCharm
+#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
+#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
+#  and can be added to the global gitignore or merged into this file.  For a more nuclear
+#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
+#.idea/
+
+# Abstra
+# Abstra is an AI-powered process automation framework.
+# Ignore directories containing user credentials, local state, and settings.
+# Learn more at https://abstra.io/docs
+.abstra/
+
+# Visual Studio Code
+#  Visual Studio Code specific template is maintained in a separate VisualStudioCode.gitignore 
+#  that can be found at https://github.com/github/gitignore/blob/main/Global/VisualStudioCode.gitignore
+#  and can be added to the global gitignore or merged into this file. However, if you prefer, 
+#  you could uncomment the following to ignore the entire vscode folder
+# .vscode/
+
+# Ruff stuff:
+.ruff_cache/
+
+# PyPI configuration file
+.pypirc
+
+# Cursor
+#  Cursor is an AI-powered code editor. `.cursorignore` specifies files/directories to
+#  exclude from AI features like autocomplete and code analysis. Recommended for sensitive data
+#  refer to https://docs.cursor.com/context/ignore-files
+.cursorignore
+.cursorindexingignore
+
+# Marimo
+marimo/_static/
+marimo/_lsp/
+__marimo__/
+Finance-Hub.env
+</file>
+
+<file path="alembic.ini">
+# A generic, single database configuration.
+
+[alembic]
+# path to migration scripts.
+# this is typically a path given in POSIX (e.g. forward slashes)
+# format, relative to the token %(here)s which refers to the location of this
+# ini file
+script_location = %(here)s/alembic
+
+# template used to generate migration file names; The default value is %%(rev)s_%%(slug)s
+# Uncomment the line below if you want the files to be prepended with date and time
+# see https://alembic.sqlalchemy.org/en/latest/tutorial.html#editing-the-ini-file
+# for all available tokens
+# file_template = %%(year)d_%%(month).2d_%%(day).2d_%%(hour).2d%%(minute).2d-%%(rev)s_%%(slug)s
+# Or organize into date-based subdirectories (requires recursive_version_locations = true)
+# file_template = %%(year)d/%%(month).2d/%%(day).2d_%%(hour).2d%%(minute).2d_%%(second).2d_%%(rev)s_%%(slug)s
+
+# sys.path path, will be prepended to sys.path if present.
+# defaults to the current working directory.  for multiple paths, the path separator
+# is defined by "path_separator" below.
+prepend_sys_path = .
+
+
+# timezone to use when rendering the date within the migration file
+# as well as the filename.
+# If specified, requires the tzdata library which can be installed by adding
+# `alembic[tz]` to the pip requirements.
+# string value is passed to ZoneInfo()
+# leave blank for localtime
+# timezone =
+
+# max length of characters to apply to the "slug" field
+# truncate_slug_length = 40
+
+# set to 'true' to run the environment during
+# the 'revision' command, regardless of autogenerate
+# revision_environment = false
+
+# set to 'true' to allow .pyc and .pyo files without
+# a source .py file to be detected as revisions in the
+# versions/ directory
+# sourceless = false
+
+# version location specification; This defaults
+# to <script_location>/versions.  When using multiple version
+# directories, initial revisions must be specified with --version-path.
+# The path separator used here should be the separator specified by "path_separator"
+# below.
+# version_locations = %(here)s/bar:%(here)s/bat:%(here)s/alembic/versions
+
+# path_separator; This indicates what character is used to split lists of file
+# paths, including version_locations and prepend_sys_path within configparser
+# files such as alembic.ini.
+# The default rendered in new alembic.ini files is "os", which uses os.pathsep
+# to provide os-dependent path splitting.
+#
+# Note that in order to support legacy alembic.ini files, this default does NOT
+# take place if path_separator is not present in alembic.ini.  If this
+# option is omitted entirely, fallback logic is as follows:
+#
+# 1. Parsing of the version_locations option falls back to using the legacy
+#    "version_path_separator" key, which if absent then falls back to the legacy
+#    behavior of splitting on spaces and/or commas.
+# 2. Parsing of the prepend_sys_path option falls back to the legacy
+#    behavior of splitting on spaces, commas, or colons.
+#
+# Valid values for path_separator are:
+#
+# path_separator = :
+# path_separator = ;
+# path_separator = space
+# path_separator = newline
+#
+# Use os.pathsep. Default configuration used for new projects.
+path_separator = os
+
+# set to 'true' to search source files recursively
+# in each "version_locations" directory
+# new in Alembic version 1.10
+# recursive_version_locations = false
+
+# the output encoding used when revision files
+# are written from script.py.mako
+# output_encoding = utf-8
+
+# database URL.  This is consumed by the user-maintained env.py script only.
+# other means of configuring database URLs may be customized within the env.py
+# file.
+sqlalchemy.url = driver://user:pass@localhost/dbname
+
+
+[post_write_hooks]
+# post_write_hooks defines scripts or Python functions that are run
+# on newly generated revision scripts.  See the documentation for further
+# detail and examples
+
+# format using "black" - use the console_scripts runner, against the "black" entrypoint
+# hooks = black
+# black.type = console_scripts
+# black.entrypoint = black
+# black.options = -l 79 REVISION_SCRIPT_FILENAME
+
+# lint with attempts to fix using "ruff" - use the module runner, against the "ruff" module
+# hooks = ruff
+# ruff.type = module
+# ruff.module = ruff
+# ruff.options = check --fix REVISION_SCRIPT_FILENAME
+
+# Alternatively, use the exec runner to execute a binary found on your PATH
+# hooks = ruff
+# ruff.type = exec
+# ruff.executable = ruff
+# ruff.options = check --fix REVISION_SCRIPT_FILENAME
+
+# Logging configuration.  This is also consumed by the user-maintained
+# env.py script only.
+[loggers]
+keys = root,sqlalchemy,alembic
+
+[handlers]
+keys = console
+
+[formatters]
+keys = generic
+
+[logger_root]
+level = WARNING
+handlers = console
+qualname =
+
+[logger_sqlalchemy]
+level = WARNING
+handlers =
+qualname = sqlalchemy.engine
+
+[logger_alembic]
+level = INFO
+handlers =
+qualname = alembic
+
+[handler_console]
+class = StreamHandler
+args = (sys.stderr,)
+level = NOTSET
+formatter = generic
+
+[formatter_generic]
+format = %(levelname)-5.5s [%(name)s] %(message)s
+datefmt = %H:%M:%S
+</file>
+
+<file path="alembic/env.py">
+from logging.config import fileConfig
+
+from sqlalchemy import engine_from_config
+from sqlalchemy import pool
+
+from alembic import context
+from config import settings
+# this is the Alembic Config object, which provides
+# access to the values within the .ini file in use.
+config = context.config
+config.set_main_option("sqlalchemy.url",settings.DATABASE_URL.replace('%', '%%'))
+
+# Interpret the config file for Python logging.
+# This line sets up loggers basically.
+if config.config_file_name is not None:
+    fileConfig(config.config_file_name)
+
+# add your model's MetaData object here
+# for 'autogenerate' support
+# from myapp import mymodel
+# target_metadata = mymodel.Base.metadata
+import models
+target_metadata = models.Base.metadata
+
+# other values from the config, defined by the needs of env.py,
+# can be acquired:
+# my_important_option = config.get_main_option("my_important_option")
+# ... etc.
+
+
+def run_migrations_offline() -> None:
+    """Run migrations in 'offline' mode.
+
+    This configures the context with just a URL
+    and not an Engine, though an Engine is acceptable
+    here as well.  By skipping the Engine creation
+    we don't even need a DBAPI to be available.
+
+    Calls to context.execute() here emit the given string to the
+    script output.
+
+    """
+    url = config.get_main_option("sqlalchemy.url")
+    context.configure(
+        url=url,
+        target_metadata=target_metadata,
+        literal_binds=True,
+        dialect_opts={"paramstyle": "named"},
+    )
+
+    with context.begin_transaction():
+        context.run_migrations()
+
+
+def run_migrations_online() -> None:
+    """Run migrations in 'online' mode.
+
+    In this scenario we need to create an Engine
+    and associate a connection with the context.
+
+    """
+    connectable = engine_from_config(
+        config.get_section(config.config_ini_section, {}),
+        prefix="sqlalchemy.",
+        poolclass=pool.NullPool,
+    )
+
+    with connectable.connect() as connection:
+        context.configure(
+            connection=connection, target_metadata=target_metadata
+        )
+
+        with context.begin_transaction():
+            context.run_migrations()
+
+
+if context.is_offline_mode():
+    run_migrations_offline()
+else:
+    run_migrations_online()
+</file>
+
+<file path="alembic/README">
+Generic single-database configuration.
+</file>
+
+<file path="alembic/script.py.mako">
+"""${message}
+
+Revision ID: ${up_revision}
+Revises: ${down_revision | comma,n}
+Create Date: ${create_date}
+
+"""
+from typing import Sequence, Union
+
+from alembic import op
+import sqlalchemy as sa
+${imports if imports else ""}
+
+# revision identifiers, used by Alembic.
+revision: str = ${repr(up_revision)}
+down_revision: Union[str, Sequence[str], None] = ${repr(down_revision)}
+branch_labels: Union[str, Sequence[str], None] = ${repr(branch_labels)}
+depends_on: Union[str, Sequence[str], None] = ${repr(depends_on)}
+
+
+def upgrade() -> None:
+    """Upgrade schema."""
+    ${upgrades if upgrades else "pass"}
+
+
+def downgrade() -> None:
+    """Downgrade schema."""
+    ${downgrades if downgrades else "pass"}
+</file>
+
+<file path="alembic/versions/005579e83426_add_budget_and_transacation_tables.py">
+"""add budget and transacation tables
+
+Revision ID: 005579e83426
+Revises: 7022c43310dd
+Create Date: 2026-02-26 16:49:36.654317
+
+"""
+from typing import Sequence, Union
+
+from alembic import op
+import sqlalchemy as sa
+from sqlalchemy.dialects import mysql
+
+# revision identifiers, used by Alembic.
+revision: str = '005579e83426'
+down_revision: Union[str, Sequence[str], None] = '7022c43310dd'
+branch_labels: Union[str, Sequence[str], None] = None
+depends_on: Union[str, Sequence[str], None] = None
+
+
+def upgrade() -> None:
+    """Upgrade schema."""
+    # ### commands auto generated by Alembic - please adjust! ###
+    op.create_table('user',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('email', sa.String(length=50), nullable=False),
+    sa.Column('password', sa.String(length=100), nullable=False),
+    sa.Column('otp', sa.String(length=6), nullable=True),
+    sa.Column('isvalid', sa.Boolean(), nullable=False),
+    sa.Column('is_active', sa.Boolean(), nullable=False),
+    sa.Column('reset_token', sa.String(length=200), nullable=True),
+    sa.Column('reset_token_expiry', sa.DateTime(timezone=True), nullable=True),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('email')
+    )
+    op.create_index(op.f('ix_user_id'), 'user', ['id'], unique=False)
+    op.create_table('budgets',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('category', sa.String(length=20), nullable=True),
+    sa.Column('budget_amount', sa.Float(), nullable=True),
+    sa.Column('spent', sa.Float(), nullable=True),
+    sa.Column('color', sa.String(length=20), nullable=True),
+    sa.Column('user_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_budgets_id'), 'budgets', ['id'], unique=False)
+    op.create_table('transactions',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('date', sa.String(length=20), nullable=True),
+    sa.Column('category', sa.String(length=20), nullable=True),
+    sa.Column('label', sa.String(length=20), nullable=True),
+    sa.Column('amount', sa.Float(), nullable=True),
+    sa.Column('type', sa.String(length=20), nullable=True),
+    sa.Column('user_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_transactions_id'), 'transactions', ['id'], unique=False)
+    # op.drop_index(op.f('email'), table_name='users')
+    op.drop_index(op.f('ix_users_id'), table_name='users')
+    op.drop_table('users')
+    # ### end Alembic commands ###
+
+
+def downgrade() -> None:
+    """Downgrade schema."""
+    # ### commands auto generated by Alembic - please adjust! ###
+    op.create_table('users',
+    sa.Column('id', mysql.INTEGER(), autoincrement=True, nullable=False),
+    sa.Column('email', mysql.VARCHAR(length=50), nullable=True),
+    sa.Column('password', mysql.VARCHAR(length=100), nullable=True),
+    sa.Column('otp', mysql.VARCHAR(length=6), nullable=True),
+    sa.Column('isvalid', mysql.TINYINT(display_width=1), autoincrement=False, nullable=True),
+    sa.Column('is_active', mysql.TINYINT(display_width=1), autoincrement=False, nullable=True),
+    sa.Column('reset_token', mysql.VARCHAR(length=200), nullable=True),
+    sa.Column('reset_token_expiry', mysql.DATETIME(), nullable=True),
+    sa.PrimaryKeyConstraint('id'),
+    mysql_collate='utf8mb4_0900_ai_ci',
+    mysql_default_charset='utf8mb4',
+    mysql_engine='InnoDB'
+    )
+    op.create_index(op.f('ix_users_id'), 'users', ['id'], unique=False)
+    op.create_index(op.f('email'), 'users', ['email'], unique=True)
+    op.drop_index(op.f('ix_transactions_id'), table_name='transactions')
+    op.drop_table('transactions')
+    op.drop_index(op.f('ix_budgets_id'), table_name='budgets')
+    op.drop_table('budgets')
+    op.drop_index(op.f('ix_user_id'), table_name='user')
+    op.drop_table('user')
+    # ### end Alembic commands ###
+</file>
+
+<file path="alembic/versions/6245c29cc1c1_change_in_users.py">
+"""change in users
+
+Revision ID: 6245c29cc1c1
+Revises: 76fa4bba0d9c
+Create Date: 2026-02-18 17:23:03.385966
+
+"""
+from typing import Sequence, Union
+
+from alembic import op
+import sqlalchemy as sa
+from sqlalchemy.dialects import mysql
+
+# revision identifiers, used by Alembic.
+revision: str = '6245c29cc1c1'
+down_revision: Union[str, Sequence[str], None] = '76fa4bba0d9c'
+branch_labels: Union[str, Sequence[str], None] = None
+depends_on: Union[str, Sequence[str], None] = None
+
+
+def upgrade() -> None:
+    """Upgrade schema."""
+    # ### commands auto generated by Alembic - please adjust! ###
+    op.alter_column('users', 'reset_token',
+               existing_type=mysql.VARCHAR(length=100),
+               type_=sa.String(length=200),
+               existing_nullable=True)
+    # ### end Alembic commands ###
+
+
+def downgrade() -> None:
+    """Downgrade schema."""
+    # ### commands auto generated by Alembic - please adjust! ###
+    op.alter_column('users', 'reset_token',
+               existing_type=sa.String(length=200),
+               type_=mysql.VARCHAR(length=100),
+               existing_nullable=True)
+    # ### end Alembic commands ###
+</file>
+
+<file path="alembic/versions/7022c43310dd_change_in_users.py">
+"""change in users
+
+Revision ID: 7022c43310dd
+Revises: 6245c29cc1c1
+Create Date: 2026-02-18 17:34:52.254147
+
+"""
+from typing import Sequence, Union
+
+from alembic import op
+import sqlalchemy as sa
+
+
+# revision identifiers, used by Alembic.
+revision: str = '7022c43310dd'
+down_revision: Union[str, Sequence[str], None] = '6245c29cc1c1'
+branch_labels: Union[str, Sequence[str], None] = None
+depends_on: Union[str, Sequence[str], None] = None
+
+
+def upgrade() -> None:
+    """Upgrade schema."""
+    # ### commands auto generated by Alembic - please adjust! ###
+    pass
+    # ### end Alembic commands ###
+
+
+def downgrade() -> None:
+    """Downgrade schema."""
+    # ### commands auto generated by Alembic - please adjust! ###
+    pass
+    # ### end Alembic commands ###
+</file>
+
+<file path="alembic/versions/76fa4bba0d9c_created_user_table.py">
+"""created user table
+
+Revision ID: 76fa4bba0d9c
+Revises: 
+Create Date: 2026-02-18 15:41:45.389007
+
+"""
+from typing import Sequence, Union
+
+from alembic import op
+import sqlalchemy as sa
+
+
+# revision identifiers, used by Alembic.
+revision: str = '76fa4bba0d9c'
+down_revision: Union[str, Sequence[str], None] = None
+branch_labels: Union[str, Sequence[str], None] = None
+depends_on: Union[str, Sequence[str], None] = None
+
+
+def upgrade() -> None:
+    """Upgrade schema."""
+    # ### commands auto generated by Alembic - please adjust! ###
+    op.create_table('users',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('email', sa.String(length=50), nullable=True),
+    sa.Column('password', sa.String(length=100), nullable=True),
+    sa.Column('otp', sa.String(length=6), nullable=True),
+    sa.Column('isvalid', sa.Boolean(), nullable=True),
+    sa.Column('is_active', sa.Boolean(), nullable=True),
+    sa.Column('reset_token', sa.String(length=100), nullable=True),
+    sa.Column('reset_token_expiry', sa.DateTime(), nullable=True),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('email')
+    )
+    op.create_index(op.f('ix_users_id'), 'users', ['id'], unique=False)
+    # ### end Alembic commands ###
+
+
+def downgrade() -> None:
+    """Downgrade schema."""
+    # ### commands auto generated by Alembic - please adjust! ###
+    op.drop_index(op.f('ix_users_id'), table_name='users')
+    op.drop_table('users')
+    # ### end Alembic commands ###
+</file>
+
+<file path="auth.py">
+
+</file>
+
+<file path="config.py">
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+class Settings(BaseSettings):
+    DATABASE_URL: str
+    SECRET_KEY: str
+    ALGORITHM: str
+    ACCESS_TOKEN_EXPIRE_MINUTES: int
+    SMTP_SERVER: str
+    SMTP_PORT: int
+    EMAIL_ADDRESS: str
+    EMAIL_PASSWORD: str
+    SENDGRID_API_KEY:str
+    model_config = SettingsConfigDict(env_file=".env")
+settings = Settings()
+</file>
+
+<file path="database.py">
+from config import settings
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker, declarative_base
+from fastapi import HTTPException
+
+if settings.DATABASE_URL is None:
+    raise HTTPException(status_code=404, detail="url is not defined!!")
+engine = create_engine(settings.DATABASE_URL)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
+
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+</file>
+
+<file path="finance.py">
+from fastapi import APIRouter, Depends, HTTPException
+from sqlalchemy.orm import Session
+from pydantic import BaseModel
+from typing import List, Optional
+from RequestModel import BudgetCreate, BudgetOut, TransactionCreate, TransactionOut
+from database import get_db
+from models import User, Transaction, Budget
+from helper import get_current_user
+from datetime import datetime
+
+financerouter = APIRouter()
+@financerouter.get("/transactions", response_model=List[TransactionOut])
+def get_transactions(
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    return db.query(Transaction).filter(Transaction.user_id == user.id).order_by(Transaction.id.desc()).all()
+
+
+@financerouter.post("/transactions", response_model=TransactionOut, status_code=201)
+def create_transaction(
+    data: TransactionCreate,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    tx = Transaction(**data.dict(), user_id=user.id)
+    db.add(tx)
+
+    # Auto-update budget spent amount for expense transactions
+    if data.type == "expense":
+        budget = db.query(Budget).filter(
+            Budget.user_id == user.id,
+            Budget.category == data.category
+        ).first()
+        if budget:
+            budget.spent += data.amount
+
+    db.commit()
+    db.refresh(tx)
+    return tx
+
+
+@financerouter.delete("/transactions/{tx_id}")
+def delete_transaction(
+    tx_id: int,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    tx = db.query(Transaction).filter(Transaction.id == tx_id, Transaction.user_id == user.id).first()
+    if not tx:
+        raise HTTPException(status_code=404, detail="Transaction not found")
+
+    # Reverse spent amount on budget
+    if tx.type == "expense":
+        budget = db.query(Budget).filter(
+            Budget.user_id == user.id,
+            Budget.category == tx.category
+        ).first()
+        if budget:
+            budget.spent = max(0, budget.spent - tx.amount)
+
+    db.delete(tx)
+    db.commit()
+    return {"message": "Transaction deleted"}
+
+
+
+@financerouter.get("/budgets", response_model=List[BudgetOut])
+def get_budgets(
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    return db.query(Budget).filter(Budget.user_id == user.id).all()
+
+
+@financerouter.post("/budgets", response_model=BudgetOut, status_code=201)
+def create_budget(
+    data: BudgetCreate,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    existing = db.query(Budget).filter(
+        Budget.user_id == user.id,
+        Budget.category == data.category
+    ).first()
+    if existing:
+        raise HTTPException(status_code=400, detail="Budget for this category already exists")
+
+    budget = Budget(**data.dict(), spent=0.0, user_id=user.id)
+    db.add(budget)
+    db.commit()
+    db.refresh(budget)
+    return budget
+
+
+@financerouter.patch("/budgets/{budget_id}", response_model=BudgetOut)
+def update_budget(
+    budget_id: int,
+    data: BudgetCreate,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    budget = db.query(Budget).filter(Budget.id == budget_id, Budget.user_id == user.id).first()
+    if not budget:
+        raise HTTPException(status_code=404, detail="Budget not found")
+    budget.category     = data.category
+    budget.budget_amount = data.budget_amount
+    budget.color        = data.color
+    db.commit()
+    db.refresh(budget)
+    return budget
+
+
+@financerouter.delete("/budgets/{budget_id}")
+def delete_budget(
+    budget_id: int,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    budget = db.query(Budget).filter(Budget.id == budget_id, Budget.user_id == user.id).first()
+    if not budget:
+        raise HTTPException(status_code=404, detail="Budget not found")
+    db.delete(budget)
+    db.commit()
+    return {"message": "Budget deleted"}
+</file>
+
+<file path="helper.py">
+from datetime import datetime, timezone, timedelta
+from models import User
+from config import settings
+from jose import jwt, JWTError
+import bcrypt
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+from fastapi import Depends, HTTPException
+from fastapi.security import OAuth2PasswordBearer
+from database import get_db
+from sqlalchemy.orm import Session
+import requests
+import re
+from config import settings 
+
+
+def create_access_token(data: dict):
+    to_encode = data.copy()
+    expire = datetime.now(timezone.utc) + timedelta(
+        minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES
+    )
+    to_encode.update({"exp": expire})
+    return jwt.encode(to_encode, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
+
+
+def hash_password(password: str) -> str:
+    salt = bcrypt.gensalt()
+    hashed_password = bcrypt.hashpw(password.encode("utf-8"), salt)
+    return hashed_password.decode("utf-8")
+
+
+def send_otp_email(to_email: str, otp: str):
+
+    message = Mail(
+        from_email=settings.EMAIL_ADDRESS,
+        to_emails=to_email,
+        subject="Your OTP Verification Code",
+        html_content=f"<h3>Your OTP is: <strong>{otp}</strong></h3>"
+    )
+
+    try:
+        sg = SendGridAPIClient(settings.SENDGRID_API_KEY)
+        response = sg.send(message)
+
+        return {
+            "status_code": response.status_code,
+            "otp": otp,
+            "message": "OTP email sent successfully"
+        }
+
+    except Exception as e:
+        return {"error": str(e)}
+
+def verify_password(palin_password: str, hashed_password: str) -> bool:
+    return bcrypt.checkpw(
+        palin_password.encode("utf-8"), hashed_password.encode("utf-8")
+    )
+
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
+
+
+def get_current_user(
+    token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)
+):
+    try:
+        payload = jwt.decode(token, settings.SECRET_KEY, algorithms=settings.ALGORITHM)
+        email = payload.get("sub")
+        if email is None:
+            raise HTTPException(status_code=401, detail="Invalid token")
+    except JWTError:
+        raise HTTPException(status_code=401, detail="Invalid token")
+
+    user = db.query(User).filter(User.email == email).first()
+
+    if not user:
+        raise HTTPException(status_code=401, detail="User Not Found!!")
+    return user
+
+
+email_pattern = r"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
+
+
+def is_valid_email(email):
+    return re.match(email_pattern, email) is not None
+</file>
+
+<file path="main.py">
+from fastapi import Depends, FastAPI
+from helper import get_current_user
+from routes import router
+from fastapi.middleware.cors import CORSMiddleware
+from finance import financerouter
+app = FastAPI()
+origins = [
+    "http://localhost:5173",  
+    "http://127.0.0.1:5173",
+    "https://finance-hub-eta-lac.vercel.app"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,           
+    allow_credentials=True,
+    allow_methods=["*"],             
+    allow_headers=["*"],             
+)
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+app.include_router(router)
+app.include_router(financerouter,  dependencies=[Depends(get_current_user)])
+</file>
+
+<file path="models.py">
+import datetime
+
+from database import Base
+from sqlalchemy import Column, DateTime, Float, ForeignKey, Integer, String, Boolean
+from sqlalchemy.orm import Mapped,mapped_column
+from datetime import datetime
+from sqlalchemy.orm import relationship
+# class User(Base):
+#     __tablename__ = "users"
+
+#     id = Column(Integer, primary_key=True, index=True)
+#     email = Column(String(50), unique=True)
+#     password = Column(String(100))
+#     otp = Column(String(6), nullable=True)
+#     isvalid = Column(Boolean, default=False)
+#     is_active = Column(Boolean, default=True)
+#     reset_token = Column(String(200), nullable=True)
+#     reset_token_expiry = Column(DateTime(timezone=True), nullable=True)
+
+class User(Base):
+    __tablename__ = "user"
+
+    id:Mapped[int]=mapped_column(primary_key=True,index=True)
+    email:Mapped[str]=mapped_column(String(50),unique=True)
+    password:Mapped[str] = mapped_column(String(100))
+    otp:Mapped[str] = mapped_column(String(6), nullable=True)
+    isvalid:Mapped[bool] = mapped_column(Boolean, default=False)
+    is_active:Mapped[bool] = mapped_column(Boolean, default=True)
+    reset_token:Mapped[str] = mapped_column(String(200), nullable=True)
+    reset_token_expiry:Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=True)
+    transactions    = relationship("Transaction", back_populates="owner", cascade="all, delete")
+    budgets         = relationship("Budget",      back_populates="owner", cascade="all, delete")
+
+class Transaction(Base):
+    __tablename__ = "transactions"
+    id       = Column(Integer, primary_key=True, index=True)
+    date     = Column(String(20))
+    category = Column(String(20))
+    label    = Column(String(20))
+    amount   = Column(Float)
+    type     = Column(String(20))   # "income" | "expense"
+    user_id  = Column(Integer, ForeignKey("user.id"))
+    owner    = relationship("User", back_populates="transactions")
+
+
+class Budget(Base):
+    __tablename__ = "budgets"
+    id            = Column(Integer, primary_key=True, index=True)
+    category      = Column(String(20))
+    budget_amount = Column(Float)
+    spent         = Column(Float, default=0.0)
+    color         = Column(String(20), default="#6366f1")
+    user_id       = Column(Integer, ForeignKey("user.id"))
+    owner         = relationship("User", back_populates="budgets")
+</file>
+
+<file path="RequestModel.py">
+from typing import Optional
+
+from pydantic import BaseModel, EmailStr
+
+
+class UserCreate(BaseModel):
+    email: EmailStr
+    password: str
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+
+class UserProfile(BaseModel):
+    id: int
+    email: EmailStr
+
+
+class UserOtp(BaseModel):
+    email: EmailStr
+    otp: str
+
+
+class UserLogin(BaseModel):
+    email: EmailStr
+    password: str
+
+
+class DeActive(BaseModel):
+    email: EmailStr
+
+
+class ChangePassword(BaseModel):
+    old_password: str
+    new_password: str
+
+
+class ChangeEmail(BaseModel):
+    email: EmailStr
+    otp: str
+
+
+class ForgetPassword(BaseModel):
+    email: EmailStr
+
+
+class ResetPassword(BaseModel):
+    new_password: str
+
+class TransactionCreate(BaseModel):
+    date: str
+    category: str
+    label: str
+    amount: float
+    type: str  # "income" | "expense"
+
+class TransactionOut(TransactionCreate):
+    id: int
+    class Config:
+        from_attributes = True
+
+class BudgetCreate(BaseModel):
+    category: str
+    budget_amount: float
+    color: Optional[str] = "#6366f1"
+
+class BudgetOut(BudgetCreate):
+    id: int
+    spent: float
+    class Config:
+        from_attributes = True
+</file>
+
+<file path="requirement.txt">
+alembic==1.18.4
+annotated-doc==0.0.4
+annotated-types==0.7.0
+anyio==4.12.1
+bcrypt==5.0.0
+certifi==2026.1.4
+cffi==2.0.0
+click==8.3.1
+colorama==0.4.6
+cryptography==46.0.5
+dnspython==2.8.0
+ecdsa==0.19.1
+email-validator==2.3.0
+fastapi==0.129.0
+fastapi-cli==0.0.23
+fastapi-cloud-cli==0.13.0
+fastar==0.8.0
+greenlet==3.3.1
+h11==0.16.0
+httpcore==1.0.9
+httptools==0.7.1
+httpx==0.28.1
+idna==3.11
+Jinja2==3.1.6
+Mako==1.3.10
+markdown-it-py==4.0.0
+MarkupSafe==3.0.3
+mdurl==0.1.2
+mysqlclient==2.2.8
+psycopg2-binary==2.9.11
+pyasn1==0.6.2
+pycparser==3.0
+pydantic==2.12.5
+pydantic-extra-types==2.11.0
+pydantic-settings==2.13.0
+pydantic_core==2.41.5
+Pygments==2.19.2
+python-dotenv==1.2.1
+python-jose==3.5.0
+python-multipart==0.0.22
+PyYAML==6.0.3
+requests==2.32.3
+rich==14.3.2
+rich-toolkit==0.19.4
+rignore==0.7.6
+rsa==4.9.1
+sentry-sdk==2.53.0
+shellingham==1.5.4
+six==1.17.0
+SQLAlchemy==2.0.46
+starlette==0.52.1
+typer==0.24.0
+typing-inspection==0.4.2
+typing_extensions==4.15.0
+urllib3==2.6.3
+uvicorn==0.41.0
+watchfiles==1.1.1
+websockets==16.0
+</file>
+
+<file path="ResponseModel.py">
+
+</file>
+
+<file path="routes.py">
+from typing import Optional
+
+from fastapi import APIRouter, Depends, HTTPException
+from fastapi import BackgroundTasks
+from pydantic import BaseModel, EmailStr
+from sentry_sdk import HttpTransport
+from models import User
+from database import get_db
+from sqlalchemy.orm import Session
+import string
+import random
+from helper import (
+    create_access_token,
+    get_current_user,
+    hash_password,
+    send_otp_email,
+    verify_password,
+    is_valid_email,
+)
+from RequestModel import (
+    ChangeEmail,
+    ChangePassword,
+    ForgetPassword,
+    ResetPassword,
+    Token,
+    UserOtp,
+)
+from datetime import datetime, timedelta, timezone
+from jose import jwt
+from config import settings
+from RequestModel import UserCreate
+
+router = APIRouter()
+
+
+@router.post("/signup", status_code=201)
+def signup(
+    user: UserCreate, background_tasks: BackgroundTasks, db: Session = Depends(get_db)
+):
+    existing_user = db.query(User).filter(User.email == user.email).first()
+    if existing_user:
+        raise HTTPException(status_code=400, detail="Email already registered!!")
+    hashed_pw = hash_password(user.password)
+
+    new_user = User(email=user.email, password=hashed_pw)
+
+    otp = "".join(random.choices(string.ascii_letters + string.digits, k=6))
+    new_user.otp = otp
+    db.add(new_user)
+    db.commit()
+    db.refresh(new_user)
+    background_tasks.add_task(send_otp_email, user.email, otp)
+    return {"message": "User Created SuccessFully!!"}
+
+
+@router.post("/signin")
+def signin(user: UserCreate, db: Session = Depends(get_db)):
+    db_user = db.query(User).filter(User.email == user.email).first()
+
+    if not db_user:
+        raise HTTPException(status_code=400, detail="Invalid Credential")
+    if not verify_password(user.password, db_user.password):
+        raise HTTPException(status_code=400, detail="Invalid Credential")
+    if not db_user.isvalid:
+        raise HTTPException(status_code=401, detail="please valid first")
+    if not db_user.is_active:
+        raise HTTPException(status_code=401, detail="this account is inactive")
+
+    access_token = create_access_token(data={"sub": db_user.email})
+    return {
+        "access_token": access_token,
+        "token_type": "bearer",
+        "user": {
+            "email": db_user.email,
+            # add more fields if your User model has them e.g. name, id
+        }
+    }
+
+@router.post("/verifyemail", response_model=dict)
+def api_verify_email(verifyotp: UserOtp, db: Session = Depends(get_db)):
+    db_user = db.query(User).filter(User.email == verifyotp.email).first()
+    
+    if not db_user:
+        raise HTTPException(status_code=404, detail="user is not exist!!")
+    
+    if db_user.otp != verifyotp.otp:
+        raise HTTPException(status_code=400, detail="otp is invalid")
+    
+    db_user.isvalid = True
+    db_user.otp = None          # ✅ Clear OTP after use
+    db.commit()
+    db.refresh(db_user)
+    return {"message": "email verified successfully"}
+
+
+@router.patch("/deactive")
+def deactive_user(
+    user: User = Depends(get_current_user), db: Session = Depends(get_db)
+):
+    if not user.is_active:
+        raise HTTPException(status_code=400, detail="this account is deactivated!!")
+    user.is_active = False
+    db.commit()
+    return {"message": "your account is deactivated!!"}
+
+
+@router.post("/change_password")
+def change_password(
+    new_info: ChangePassword,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    if not user.is_active:
+        raise HTTPException(status_code=400, detail="this account is deactivated!!")
+    if not (verify_password(new_info.old_password, user.password)):
+        raise HTTPException(status_code=400, detail="please enter the right password!!")
+    hashed_password = hash_password(new_info.new_password)
+    user.password = hashed_password
+    db.commit()
+    return {"password": "password badal gya hai"}
+
+
+@router.post("/request-change-email")
+def request_change_email(
+    background_tasks: BackgroundTasks,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    db_email = db.query(User).filter(User.email == user.email).first()
+    if not db_email:
+        raise HTTPException(status_code=400, detail="this account is not exist!!")
+    if not user.is_active:
+        raise HTTPException(status_code=400, detail="this account is deactivated!!")
+    otp = "".join(random.choices(string.ascii_letters + string.digits, k=6))
+    db_email.otp = otp
+    db.commit()
+    db.refresh(db_email)
+    background_tasks.add_task(send_otp_email, user.email, otp)
+    return {"message": "For changing the email otp is generated SuccessFully!!"}
+
+
+@router.put("/change_email")
+def change_password(
+    new_info: ChangeEmail,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    if not is_valid_email(new_info.email):
+        raise HTTPException(status_code=400, detail="email is not validated!!")
+    db_email = db.query(User).filter(User.email == user.email).first()
+    if not db_email:
+        raise HTTPException(status_code=400, detail="this account is not exist!!")
+    if not user.is_active:
+        raise HTTPException(status_code=400, detail="this account is deactivated!!")
+    if not (user.otp == new_info.otp):
+        raise HTTPException(status_code=400, detail="otp galat hai!!")
+    user.email = new_info.email
+    token = create_access_token({"sub": new_info.email})
+    db.commit()
+    return {"email": "email is changed!!", "token": token}
+
+
+@router.post("/forgetpassword")
+def forget_password(data: ForgetPassword, db: Session = Depends(get_db)):
+    db_email = db.query(User).filter(User.email == data.email).first()
+    if not db_email:
+        raise HTTPException(status_code=400, detail="email is not existed!!")
+    if not db_email.is_active:
+        raise HTTPException(status_code=400, detail="this account is deactivated!!")
+    db_email.reset_token_expiry = datetime.now(timezone.utc) + timedelta(minutes=15)
+    to_encode = {"sub": data.email}
+    to_encode.update({"exp": db_email.reset_token_expiry})
+    db_email.reset_token = jwt.encode(
+        to_encode, settings.SECRET_KEY, algorithm=settings.ALGORITHM
+    )
+    db.commit()
+    return {
+        "reset token": db_email.reset_token,
+        "expire": "please reset password in 15 minutes",
+    }
+
+
+@router.post("/reset_password")
+def reset_password(
+    new_info: ResetPassword,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    if not user.is_active:
+        raise HTTPException(status_code=400, detail="this account is deactivated!!")
+    if user.reset_token_expiry < datetime.utcnow():
+        user.reset_token = None
+        user.reset_token_expiry = None
+        db.commit()
+        raise HTTPException(status_code=400, detail="token is expired!!")
+    hashed_password = hash_password(new_info.new_password)
+    user.password = hashed_password
+    user.reset_token = None
+    user.reset_token_expiry = None
+    db.commit()
+    return {"password": "password badal gya hai"}
+</file>
+
+</files>

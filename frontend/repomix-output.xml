@@ -1,0 +1,3201 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.gitignore
+eslint.config.js
+index.html
+package.json
+public/vite.svg
+README.md
+src/api/authApi.jsx
+src/api/axiosInstance.jsx
+src/App.css
+src/App.jsx
+src/assets/react.svg
+src/Components/Common/Footer.jsx
+src/Components/Common/Header.jsx
+src/Components/Common/Sidebar.jsx
+src/Components/Features/PageLoader.jsx
+src/Config/theme.jsx
+src/Context/ContextShop.jsx
+src/Context/ContextSlices/authReader.jsx
+src/Context/ThemeContext.jsx
+src/index.css
+src/main.jsx
+src/Pages/Analytics.jsx
+src/Pages/Budget.jsx
+src/Pages/Cards.jsx
+src/Pages/ForgetPassword.jsx
+src/Pages/Home.jsx
+src/Pages/Login.jsx
+src/Pages/MainDashboard.jsx
+src/Pages/Reports.jsx
+src/Pages/Settings.jsx
+src/Pages/SignUp.jsx
+src/Pages/Transaction.jsx
+src/Pages/VerifyEmail.jsx
+tailwind.config.js
+vite.config.js
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".gitignore">
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+</file>
+
+<file path="eslint.config.js">
+import js from '@eslint/js'
+import globals from 'globals'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import { defineConfig, globalIgnores } from 'eslint/config'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{js,jsx}'],
+    extends: [
+      js.configs.recommended,
+      reactHooks.configs.flat.recommended,
+      reactRefresh.configs.vite,
+    ],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        ecmaFeatures: { jsx: true },
+        sourceType: 'module',
+      },
+    },
+    rules: {
+      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+    },
+  },
+])
+</file>
+
+<file path="index.html">
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>feb-10-assignment</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>
+</file>
+
+<file path="package.json">
+{
+  "name": "feb-10-assignment",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.11.2",
+    "@tailwindcss/vite": "^4.1.18",
+    "axios": "^1.13.5",
+    "chart.js": "^4.5.1",
+    "formik": "^2.4.9",
+    "react": "^19.2.0",
+    "react-chartjs-2": "^5.3.1",
+    "react-dom": "^19.2.0",
+    "react-hot-toast": "^2.6.0",
+    "react-icons": "^5.5.0",
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^7.13.1",
+    "react-spinners": "^0.17.0",
+    "tailwindcss": "^4.1.18",
+    "yup": "^1.7.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.1",
+    "eslint": "^9.39.1",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "globals": "^16.5.0",
+    "vite": "^7.3.1"
+  }
+}
+</file>
+
+<file path="public/vite.svg">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--logos" width="31.88" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 257"><defs><linearGradient id="IconifyId1813088fe1fbc01fb466" x1="-.828%" x2="57.636%" y1="7.652%" y2="78.411%"><stop offset="0%" stop-color="#41D1FF"></stop><stop offset="100%" stop-color="#BD34FE"></stop></linearGradient><linearGradient id="IconifyId1813088fe1fbc01fb467" x1="43.376%" x2="50.316%" y1="2.242%" y2="89.03%"><stop offset="0%" stop-color="#FFEA83"></stop><stop offset="8.333%" stop-color="#FFDD35"></stop><stop offset="100%" stop-color="#FFA800"></stop></linearGradient></defs><path fill="url(#IconifyId1813088fe1fbc01fb466)" d="M255.153 37.938L134.897 252.976c-2.483 4.44-8.862 4.466-11.382.048L.875 37.958c-2.746-4.814 1.371-10.646 6.827-9.67l120.385 21.517a6.537 6.537 0 0 0 2.322-.004l117.867-21.483c5.438-.991 9.574 4.796 6.877 9.62Z"></path><path fill="url(#IconifyId1813088fe1fbc01fb467)" d="M185.432.063L96.44 17.501a3.268 3.268 0 0 0-2.634 3.014l-5.474 92.456a3.268 3.268 0 0 0 3.997 3.378l24.777-5.718c2.318-.535 4.413 1.507 3.936 3.838l-7.361 36.047c-.495 2.426 1.782 4.5 4.151 3.78l15.304-4.649c2.372-.72 4.652 1.36 4.15 3.788l-11.698 56.621c-.732 3.542 3.979 5.473 5.943 2.437l1.313-2.028l72.516-144.72c1.215-2.423-.88-5.186-3.54-4.672l-25.505 4.922c-2.396.462-4.435-1.77-3.759-4.114l16.646-57.705c.677-2.35-1.37-4.583-3.769-4.113Z"></path></svg>
+</file>
+
+<file path="README.md">
+# React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## React Compiler
+
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+</file>
+
+<file path="src/api/authApi.jsx">
+// src/api/authApi.js
+import api from "./axiosInstance";
+
+// ── Auth ──
+export const loginApi       = (data) => api.post("/signin", data);
+export const signupApi      = (data) => api.post("/signup", data);
+export const verifyEmailApi = (data) => api.post("/verifyemail", data);
+export const logoutApi      = ()     => Promise.resolve();
+
+// ── Password / Email ──
+export const changePasswordApi     = (data) => api.post("/change_password", data);
+export const requestChangeEmailApi = ()     => api.post("/request-change-email");
+export const changeEmailApi        = (data) => api.put("/change_email", data);
+export const forgetPasswordApi     = (data) => api.post("/forgetpassword", data);
+export const resetPasswordApi      = (data) => api.post("/reset_password", data);
+
+// ── Transactions ──
+export const getTransactionsApi   = ()     => api.get("/transactions");
+export const createTransactionApi = (data) => api.post("/transactions", data);
+export const deleteTransactionApi = (id)   => api.delete(`/transactions/${id}`);
+
+// ── Budgets ──
+export const getBudgetsApi   = ()         => api.get("/budgets");
+export const createBudgetApi = (data)     => api.post("/budgets", data);
+export const updateBudgetApi = (id, data) => api.patch(`/budgets/${id}`, data);
+export const deleteBudgetApi = (id)       => api.delete(`/budgets/${id}`);
+</file>
+
+<file path="src/api/axiosInstance.jsx">
+// src/api/axiosInstance.js
+import axios from "axios";
+
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_URL || "http://localhost:8000",
+  headers: { "Content-Type": "application/json" },
+});
+
+// Attach token to every request
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
+
+// Auto-logout on 401
+api.interceptors.response.use(
+  (res) => res,
+  (err) => {
+    if (err.response?.status === 401) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      window.location.href = "/login";
+    }
+    return Promise.reject(err);
+  }
+);
+
+export default api;
+</file>
+
+<file path="src/App.css">
+
+</file>
+
+<file path="src/App.jsx">
+// src/App.jsx
+import React, { lazy, Suspense } from "react";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import PageLoader from "./Components/Features/PageLoader";
+import { useSelector } from "react-redux";
+
+const MainLayout     = lazy(() => import("./Pages/MainDashboard"));
+const Login          = lazy(() => import("./Pages/Login"));
+const Signup         = lazy(() => import("./Pages/SignUp"));
+const VerifyEmail    = lazy(() => import("./Pages/VerifyEmail"));
+const ForgotPassword = lazy(() => import("./Pages/ForgetPassword"));
+const Home           = lazy(() => import("./Pages/Home"));
+const Transaction    = lazy(() => import("./Pages/Transaction"));
+const Analytics      = lazy(() => import("./Pages/Analytics"));
+const Budget         = lazy(() => import("./Pages/Budget"));
+const Cards          = lazy(() => import("./Pages/Cards"));
+const Reports        = lazy(() => import("./Pages/Reports"));
+const Settings       = lazy(() => import("./Pages/Settings"));
+
+const PrivateRoute = ({ children }) => {
+  const isLoggedIn = useSelector((s) => s.auth.isLoggedIn);
+  return isLoggedIn ? children : <Navigate to="/login" replace />;
+};
+
+const App = () => (
+  <BrowserRouter>
+    <Suspense fallback={<PageLoader />}>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          {/* Public */}
+          <Route path="login"           element={<Login />} />
+          <Route path="signup"          element={<Signup />} />
+          <Route path="verify-email"    element={<VerifyEmail />} />
+          <Route path="forgot-password" element={<ForgotPassword />} />
+
+          {/* Protected */}
+          <Route index                  element={<PrivateRoute><Home /></PrivateRoute>} />
+          <Route path="dashboard"       element={<PrivateRoute><Home /></PrivateRoute>} />
+          <Route path="transaction"     element={<PrivateRoute><Transaction /></PrivateRoute>} />
+          <Route path="analytics"       element={<PrivateRoute><Analytics /></PrivateRoute>} />
+          <Route path="budget"          element={<PrivateRoute><Budget /></PrivateRoute>} />
+          <Route path="cards"           element={<PrivateRoute><Cards /></PrivateRoute>} />
+          <Route path="reports"         element={<PrivateRoute><Reports /></PrivateRoute>} />
+          <Route path="settings"        element={<PrivateRoute><Settings /></PrivateRoute>} />
+        </Route>
+      </Routes>
+    </Suspense>
+  </BrowserRouter>
+);
+
+export default App;
+</file>
+
+<file path="src/assets/react.svg">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--logos" width="35.93" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 228"><path fill="#00D8FF" d="M210.483 73.824a171.49 171.49 0 0 0-8.24-2.597c.465-1.9.893-3.777 1.273-5.621c6.238-30.281 2.16-54.676-11.769-62.708c-13.355-7.7-35.196.329-57.254 19.526a171.23 171.23 0 0 0-6.375 5.848a155.866 155.866 0 0 0-4.241-3.917C100.759 3.829 77.587-4.822 63.673 3.233C50.33 10.957 46.379 33.89 51.995 62.588a170.974 170.974 0 0 0 1.892 8.48c-3.28.932-6.445 1.924-9.474 2.98C17.309 83.498 0 98.307 0 113.668c0 15.865 18.582 31.778 46.812 41.427a145.52 145.52 0 0 0 6.921 2.165a167.467 167.467 0 0 0-2.01 9.138c-5.354 28.2-1.173 50.591 12.134 58.266c13.744 7.926 36.812-.22 59.273-19.855a145.567 145.567 0 0 0 5.342-4.923a168.064 168.064 0 0 0 6.92 6.314c21.758 18.722 43.246 26.282 56.54 18.586c13.731-7.949 18.194-32.003 12.4-61.268a145.016 145.016 0 0 0-1.535-6.842c1.62-.48 3.21-.974 4.76-1.488c29.348-9.723 48.443-25.443 48.443-41.52c0-15.417-17.868-30.326-45.517-39.844Zm-6.365 70.984c-1.4.463-2.836.91-4.3 1.345c-3.24-10.257-7.612-21.163-12.963-32.432c5.106-11 9.31-21.767 12.459-31.957c2.619.758 5.16 1.557 7.61 2.4c23.69 8.156 38.14 20.213 38.14 29.504c0 9.896-15.606 22.743-40.946 31.14Zm-10.514 20.834c2.562 12.94 2.927 24.64 1.23 33.787c-1.524 8.219-4.59 13.698-8.382 15.893c-8.067 4.67-25.32-1.4-43.927-17.412a156.726 156.726 0 0 1-6.437-5.87c7.214-7.889 14.423-17.06 21.459-27.246c12.376-1.098 24.068-2.894 34.671-5.345a134.17 134.17 0 0 1 1.386 6.193ZM87.276 214.515c-7.882 2.783-14.16 2.863-17.955.675c-8.075-4.657-11.432-22.636-6.853-46.752a156.923 156.923 0 0 1 1.869-8.499c10.486 2.32 22.093 3.988 34.498 4.994c7.084 9.967 14.501 19.128 21.976 27.15a134.668 134.668 0 0 1-4.877 4.492c-9.933 8.682-19.886 14.842-28.658 17.94ZM50.35 144.747c-12.483-4.267-22.792-9.812-29.858-15.863c-6.35-5.437-9.555-10.836-9.555-15.216c0-9.322 13.897-21.212 37.076-29.293c2.813-.98 5.757-1.905 8.812-2.773c3.204 10.42 7.406 21.315 12.477 32.332c-5.137 11.18-9.399 22.249-12.634 32.792a134.718 134.718 0 0 1-6.318-1.979Zm12.378-84.26c-4.811-24.587-1.616-43.134 6.425-47.789c8.564-4.958 27.502 2.111 47.463 19.835a144.318 144.318 0 0 1 3.841 3.545c-7.438 7.987-14.787 17.08-21.808 26.988c-12.04 1.116-23.565 2.908-34.161 5.309a160.342 160.342 0 0 1-1.76-7.887Zm110.427 27.268a347.8 347.8 0 0 0-7.785-12.803c8.168 1.033 15.994 2.404 23.343 4.08c-2.206 7.072-4.956 14.465-8.193 22.045a381.151 381.151 0 0 0-7.365-13.322Zm-45.032-43.861c5.044 5.465 10.096 11.566 15.065 18.186a322.04 322.04 0 0 0-30.257-.006c4.974-6.559 10.069-12.652 15.192-18.18ZM82.802 87.83a323.167 323.167 0 0 0-7.227 13.238c-3.184-7.553-5.909-14.98-8.134-22.152c7.304-1.634 15.093-2.97 23.209-3.984a321.524 321.524 0 0 0-7.848 12.897Zm8.081 65.352c-8.385-.936-16.291-2.203-23.593-3.793c2.26-7.3 5.045-14.885 8.298-22.6a321.187 321.187 0 0 0 7.257 13.246c2.594 4.48 5.28 8.868 8.038 13.147Zm37.542 31.03c-5.184-5.592-10.354-11.779-15.403-18.433c4.902.192 9.899.29 14.978.29c5.218 0 10.376-.117 15.453-.343c-4.985 6.774-10.018 12.97-15.028 18.486Zm52.198-57.817c3.422 7.8 6.306 15.345 8.596 22.52c-7.422 1.694-15.436 3.058-23.88 4.071a382.417 382.417 0 0 0 7.859-13.026a347.403 347.403 0 0 0 7.425-13.565Zm-16.898 8.101a358.557 358.557 0 0 1-12.281 19.815a329.4 329.4 0 0 1-23.444.823c-7.967 0-15.716-.248-23.178-.732a310.202 310.202 0 0 1-12.513-19.846h.001a307.41 307.41 0 0 1-10.923-20.627a310.278 310.278 0 0 1 10.89-20.637l-.001.001a307.318 307.318 0 0 1 12.413-19.761c7.613-.576 15.42-.876 23.31-.876H128c7.926 0 15.743.303 23.354.883a329.357 329.357 0 0 1 12.335 19.695a358.489 358.489 0 0 1 11.036 20.54a329.472 329.472 0 0 1-11 20.722Zm22.56-122.124c8.572 4.944 11.906 24.881 6.52 51.026c-.344 1.668-.73 3.367-1.15 5.09c-10.622-2.452-22.155-4.275-34.23-5.408c-7.034-10.017-14.323-19.124-21.64-27.008a160.789 160.789 0 0 1 5.888-5.4c18.9-16.447 36.564-22.941 44.612-18.3ZM128 90.808c12.625 0 22.86 10.235 22.86 22.86s-10.235 22.86-22.86 22.86s-22.86-10.235-22.86-22.86s10.235-22.86 22.86-22.86Z"></path></svg>
+</file>
+
+<file path="src/Components/Common/Footer.jsx">
+import { FiMail, FiPhone, FiGithub, FiTwitter } from "react-icons/fi";
+
+const Footer = () => {
+  return (
+    <footer className="bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-6 mt-auto">
+      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+        <p className="text-sm text-slate-600 dark:text-slate-400">
+          © {new Date().getFullYear()} FinanceHub. All rights reserved.
+        </p>
+
+        <div className="flex items-center space-x-4 text-slate-600 dark:text-slate-400">
+          <FiMail size={18} />
+          <FiPhone size={18} />
+          <FiGithub size={18} />
+          <FiTwitter size={18} />
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
+</file>
+
+<file path="src/Components/Common/Header.jsx">
+// src/Components/Common/Header.jsx
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../../Context/ContextSlices/authReader";
+import { useNavigate, Link } from "react-router-dom";
+import { FiLogOut, FiSun, FiMoon, FiMenu, FiX, FiBell } from "react-icons/fi";
+import { useTheme } from "../../Context/ThemeContext";
+import { useState } from "react";
+import { toast } from "react-hot-toast";
+import { logoutApi } from "../../api/authApi";
+
+const Header = ({ onMenuToggle, menuOpen }) => {
+  const { isLoggedIn, user } = useSelector((s) => s.auth);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { theme, toggleTheme } = useTheme();
+
+  const handleLogout = async () => {
+    try {
+      await logoutApi();
+    } catch (_) {
+      // ignore – clear locally regardless
+    }
+    dispatch(logout());
+    toast.success("Logged out. See you soon! 👋", { icon: "🚪" });
+    navigate("/login");
+  };
+
+  return (
+    <div className="flex justify-between items-center w-full px-4 md:px-6">
+      {/* Left: Hamburger (mobile) + Brand */}
+      <div className="flex items-center gap-3">
+        <button
+          onClick={onMenuToggle}
+          className="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+          aria-label="Toggle menu"
+        >
+          {menuOpen ? <FiX size={22} /> : <FiMenu size={22} />}
+        </button>
+
+        <Link
+          to="/"
+          className="flex items-center gap-2 font-display text-xl font-bold text-indigo-600 dark:text-indigo-400 tracking-tight"
+          style={{ fontFamily: "'Playfair Display', serif" }}
+        >
+          <span className="bg-indigo-600 text-white rounded-lg px-2 py-0.5 text-sm font-bold tracking-widest">FH</span>
+          <span className="hidden sm:inline">FinanceHub</span>
+        </Link>
+      </div>
+
+      {/* Right */}
+      <div className="flex items-center gap-2 sm:gap-3">
+        {isLoggedIn && (
+          <button className="relative p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+            <FiBell size={18} />
+            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full" />
+          </button>
+        )}
+
+        <button
+          onClick={toggleTheme}
+          className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition"
+          aria-label="Toggle theme"
+        >
+          {theme === "dark" ? <FiSun size={17} /> : <FiMoon size={17} />}
+        </button>
+
+        {isLoggedIn ? (
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="hidden sm:flex items-center gap-2">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-400 to-cyan-400 flex items-center justify-center text-white text-sm font-bold">
+                {(user?.name || "U")[0].toUpperCase()}
+              </div>
+              <span className="text-sm font-medium text-slate-700 dark:text-slate-200">
+                {user?.name || "User"}
+              </span>
+            </div>
+            <button
+              onClick={handleLogout}
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800 rounded-lg text-sm font-semibold hover:bg-red-100 dark:hover:bg-red-900/40 transition"
+            >
+              <FiLogOut size={14} />
+              <span className="hidden xs:inline">Logout</span>
+            </button>
+          </div>
+        ) : (
+          <div className="flex items-center gap-2">
+            <Link
+              to="/login"
+              className="px-3 py-1.5 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+            >
+              Login
+            </Link>
+            <Link
+              to="/signup"
+              className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-sm font-semibold transition shadow-sm shadow-indigo-200 dark:shadow-none"
+            >
+              Sign Up
+            </Link>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Header;
+</file>
+
+<file path="src/Components/Common/Sidebar.jsx">
+// src/Components/Common/Sidebar.jsx
+import { NavLink } from "react-router-dom";
+import {
+  FiHome, FiDollarSign, FiPieChart, FiTrendingUp,
+  FiTarget, FiCreditCard, FiSettings, FiX,
+} from "react-icons/fi";
+
+const menu = [
+  { name: "Dashboard",    path: "/dashboard",    icon: FiHome },
+  { name: "Transactions", path: "/transaction",  icon: FiDollarSign },
+  { name: "Analytics",    path: "/analytics",    icon: FiTrendingUp },
+  { name: "Budget",       path: "/budget",       icon: FiTarget },
+  { name: "Cards",        path: "/cards",        icon: FiCreditCard },
+  { name: "Reports",  path: "/reports",  icon: FiPieChart },
+];
+
+const bottom = [
+  { name: "Settings", path: "/settings", icon: FiSettings },
+];
+
+const Sidebar = ({ open, onClose }) => {
+  return (
+    <>
+      {/* Overlay for mobile */}
+      {open && (
+        <div
+          className="fixed inset-0 bg-black/40 backdrop-blur-sm z-30 md:hidden"
+          onClick={onClose}
+        />
+      )}
+
+      <aside
+        className={`
+          fixed md:static top-0 left-0 z-40 md:z-auto
+          h-full w-64 flex flex-col
+          bg-white dark:bg-slate-900
+          border-r border-slate-200 dark:border-slate-800
+          transform transition-transform duration-300 ease-in-out
+          ${open ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
+        `}
+      >
+        {/* Mobile close */}
+        <div className="flex items-center justify-between p-5 md:hidden border-b border-slate-200 dark:border-slate-800">
+          <span className="font-bold text-indigo-600 dark:text-indigo-400" style={{ fontFamily: "'Playfair Display', serif" }}>
+            FinanceHub
+          </span>
+          <button onClick={onClose} className="text-slate-500 hover:text-slate-700 dark:hover:text-slate-300">
+            <FiX size={20} />
+          </button>
+        </div>
+
+        {/* Nav Items */}
+        <nav className="flex-1 px-3 py-5 space-y-1">
+          <p className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider px-3 mb-3">
+            Main Menu
+          </p>
+          {menu.map(({ name, path, icon: Icon }) => (
+            <NavLink
+              key={name}
+              to={path}
+              onClick={onClose}
+              className={({ isActive }) =>
+                `flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150
+                ${isActive
+                  ? "bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 shadow-sm"
+                  : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100"
+                }`
+              }
+            >
+              {({ isActive }) => (
+                <>
+                  <span className={`p-1.5 rounded-lg ${isActive ? "bg-indigo-100 dark:bg-indigo-900/50" : "bg-transparent"}`}>
+                    <Icon size={16} />
+                  </span>
+                  {name}
+                  {isActive && (
+                    <span className="ml-auto w-1.5 h-1.5 bg-indigo-500 rounded-full" />
+                  )}
+                </>
+              )}
+            </NavLink>
+          ))}
+
+          <div className="pt-4">
+            <p className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider px-3 mb-3">
+              Preferences
+            </p>
+            {bottom.map(({ name, path, icon: Icon }) => (
+              <NavLink
+                key={name}
+                to={path}
+                onClick={onClose}
+                className={({ isActive }) =>
+                  `flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150
+                  ${isActive
+                    ? "bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300"
+                    : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+                  }`
+                }
+              >
+                {({ isActive }) => (
+                  <>
+                    <span className={`p-1.5 rounded-lg ${isActive ? "bg-indigo-100 dark:bg-indigo-900/50" : ""}`}>
+                      <Icon size={16} />
+                    </span>
+                    {name}
+                  </>
+                )}
+              </NavLink>
+            ))}
+          </div>
+        </nav>
+
+        {/* Bottom user card */}
+        {/* <div className="p-4 border-t border-slate-200 dark:border-slate-800">
+          <div className="flex items-center gap-3 px-2 py-2">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-400 to-cyan-400 flex-shrink-0 flex items-center justify-center text-white text-xs font-bold">
+              FH
+            </div>
+            <div className="min-w-0">
+              <p className="text-xs font-semibold text-slate-700 dark:text-slate-300 truncate">FinanceHub Pro</p>
+              <p className="text-xs text-slate-400 truncate">v2.0</p>
+            </div>
+          </div>
+        </div> */}
+      </aside>
+    </>
+  );
+};
+
+export default Sidebar;
+</file>
+
+<file path="src/Components/Features/PageLoader.jsx">
+import { ClipLoader } from "react-spinners";
+
+const PageLoader = () => {
+  return (
+    <div className="flex items-center justify-center min-h-50">
+      <ClipLoader size={45} color="#6366f1" />
+    </div>
+  );
+};
+
+export default PageLoader;
+</file>
+
+<file path="src/Config/theme.jsx">
+export const theme = {
+  colors: {
+    primary:       "#6366f1", // indigo-500
+    primaryDark:   "#4f46e5", // indigo-600
+    primaryLight:  "#a5b4fc", // indigo-300
+    accent:        "#06b6d4", // cyan-500
+    success:       "#10b981", // emerald-500
+    danger:        "#ef4444", // red-500
+    warning:       "#f59e0b", // amber-500
+
+    // Light mode
+    bgLight:       "#f8fafc",
+    surfaceLight:  "#ffffff",
+    borderLight:   "#e2e8f0",
+    textLight:     "#0f172a",
+    mutedLight:    "#64748b",
+
+    // Dark mode
+    bgDark:        "#0b0f1a",
+    surfaceDark:   "#111827",
+    borderDark:    "#1e293b",
+    textDark:      "#f1f5f9",
+    mutedDark:     "#94a3b8",
+  },
+  fonts: {
+    display: "'Playfair Display', serif",
+    body:    "'DM Sans', sans-serif",
+    mono:    "'JetBrains Mono', monospace",
+  },
+  radius: {
+    sm: "0.5rem",
+    md: "0.875rem",
+    lg: "1.25rem",
+    xl: "1.75rem",
+  },
+};
+
+export default theme;
+</file>
+
+<file path="src/Context/ContextShop.jsx">
+import React from 'react'
+import authReader from "../Context/ContextSlices/authReader"
+import { configureStore } from '@reduxjs/toolkit'
+export const store=configureStore({
+  reducer:{
+    auth:authReader,
+  }
+})
+</file>
+
+<file path="src/Context/ContextSlices/authReader.jsx">
+import { createSlice } from "@reduxjs/toolkit";
+const token = localStorage.getItem("token")
+const user = (localStorage.getItem("user"))
+const initialState = {
+    user: user || null,
+    token: token || null,
+    isLoggedIn: !!token,
+}
+const authSlice = createSlice({
+    name: 'auth',
+    initialState,
+    reducers: {
+        setCredentials: (state, action) => {
+            const { user, token } = action.payload;
+            state.user = user;
+            state.token = token;
+            state.isLoggedIn = true;
+            localStorage.setItem('token', token);
+            localStorage.setItem('user', JSON.stringify(user));
+        },
+        logout: (state) => {
+            state.user = null;
+            state.token = null;
+            state.isLoggedIn = false;
+
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+        },
+    }
+})
+export const {setCredentials,logout} =authSlice.actions;
+export default authSlice.reducer;
+</file>
+
+<file path="src/Context/ThemeContext.jsx">
+import React, { createContext, useContext, useState, useEffect } from 'react';
+
+const ThemeContext = createContext();
+
+export const ThemeProvider = ({ children }) => {
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('theme') || 'light';
+  });
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    
+    if (theme === 'dark') {
+      root.classList.add('dark');
+      root.style.colorScheme = 'dark';
+    } else {
+      root.classList.remove('dark');
+      root.style.colorScheme = 'light';
+    }
+    
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => setTheme(t => t === 'light' ? 'dark' : 'light');
+
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+
+export const useTheme = () => useContext(ThemeContext);
+</file>
+
+<file path="src/index.css">
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light dark;
+}
+
+/* src/index.css  — paste at the top, before Tailwind directives */
+
+
+/* ─── CSS Theme Tokens ─────────────────────────────────── */
+:root {
+  --primary:        #6366f1;
+  --primary-dark:   #4f46e5;
+  --accent:         #06b6d4;
+  --success:        #10b981;
+  --danger:         #ef4444;
+  --warning:        #f59e0b;
+
+  --bg:             #f8fafc;
+  --surface:        #ffffff;
+  --border:         #e2e8f0;
+  --text:           #0f172a;
+  --muted:          #64748b;
+
+  /* react-hot-toast light */
+  --toast-bg:       #ffffff;
+  --toast-color:    #0f172a;
+
+  --font-display:   'Playfair Display', serif;
+  --font-body:      'DM Sans', sans-serif;
+  --font-mono:      'JetBrains Mono', monospace;
+}
+
+.dark {
+  --bg:             #0b0f1a;
+  --surface:        #111827;
+  --border:         #1e293b;
+  --text:           #f1f5f9;
+  --muted:          #94a3b8;
+
+  /* react-hot-toast dark */
+  --toast-bg:       #1e293b;
+  --toast-color:    #f1f5f9;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar          { width: 6px; }
+::-webkit-scrollbar-track    { background: transparent; }
+::-webkit-scrollbar-thumb    { background: #cbd5e1; border-radius: 3px; }
+.dark ::-webkit-scrollbar-thumb { background: #334155; }
+</file>
+
+<file path="src/main.jsx">
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.jsx'
+import { store } from './Context/ContextShop.jsx'
+import { Provider } from 'react-redux'
+import { ThemeProvider } from './Context/ThemeContext.jsx'
+createRoot(document.getElementById('root')).render(
+
+  <StrictMode>
+    <Provider store={store}>
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
+    </Provider>
+  </StrictMode>,
+)
+</file>
+
+<file path="src/Pages/Analytics.jsx">
+// src/Pages/Analytics.jsx
+import React from "react";
+import { Bar, Line } from "react-chartjs-2";
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, PointElement, LineElement, Tooltip, Legend } from "chart.js";
+import { FiTrendingUp, FiArrowUp, FiArrowDown } from "react-icons/fi";
+
+ChartJS.register(CategoryScale, LinearScale, BarElement, PointElement, LineElement, Tooltip, Legend);
+
+const months = ["Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb"];
+
+const barData = {
+  labels: months,
+  datasets: [
+    {
+      label: "Income",
+      data: [2800, 3100, 2900, 3400, 3200, 3000, 3000],
+      backgroundColor: "rgba(99,102,241,0.8)",
+      borderRadius: 6,
+    },
+    {
+      label: "Expenses",
+      data: [1500, 1700, 1600, 1800, 2000, 1400, 1570],
+      backgroundColor: "rgba(239,68,68,0.7)",
+      borderRadius: 6,
+    },
+  ],
+};
+
+const savingsData = {
+  labels: months,
+  datasets: [{
+    label: "Savings",
+    data: [1300, 1400, 1300, 1600, 1200, 1600, 1430],
+    borderColor: "#10b981",
+    backgroundColor: "rgba(16,185,129,0.1)",
+    tension: 0.4,
+    fill: true,
+  }],
+};
+
+const opts = {
+  responsive: true, maintainAspectRatio: false,
+  plugins: { legend: { labels: { color: "#94a3b8", font: { size: 12 } } } },
+  scales: {
+    x: { grid: { color: "rgba(148,163,184,0.1)" }, ticks: { color: "#94a3b8" } },
+    y: { grid: { color: "rgba(148,163,184,0.1)" }, ticks: { color: "#94a3b8" } },
+  },
+};
+
+const insights = [
+  { label: "Avg Monthly Savings", value: "$1,419", icon: FiArrowUp, color: "text-emerald-500", bg: "bg-emerald-50 dark:bg-emerald-900/20" },
+  { label: "Highest Expense Month", value: "December", icon: FiArrowDown, color: "text-red-500", bg: "bg-red-50 dark:bg-red-900/20" },
+  { label: "Savings Rate", value: "47.3%", icon: FiTrendingUp, color: "text-indigo-500", bg: "bg-indigo-50 dark:bg-indigo-900/20" },
+];
+
+const Analytics = () => (
+  <div className="space-y-6" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+    <div>
+      <h1 className="text-2xl font-bold text-slate-900 dark:text-white" style={{ fontFamily: "'Playfair Display', serif" }}>
+        Analytics
+      </h1>
+      <p className="text-sm text-slate-500 dark:text-slate-400 mt-0.5">Last 7 months financial overview</p>
+    </div>
+
+    {/* Insight cards */}
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      {insights.map((ins, i) => (
+        <div key={i} className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 flex items-center gap-4">
+          <span className={`p-3 rounded-xl ${ins.bg} ${ins.color}`}>
+            <ins.icon size={20} />
+          </span>
+          <div>
+            <p className="text-lg font-bold text-slate-900 dark:text-white">{ins.value}</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400">{ins.label}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5">
+        <h3 className="font-semibold text-slate-700 dark:text-slate-200 mb-4">Income vs Expenses</h3>
+        <div className="h-64"><Bar data={barData} options={opts} /></div>
+      </div>
+      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5">
+        <h3 className="font-semibold text-slate-700 dark:text-slate-200 mb-4">Savings Trend</h3>
+        <div className="h-64"><Line data={savingsData} options={opts} /></div>
+      </div>
+    </div>
+  </div>
+);
+
+export default Analytics;
+</file>
+
+<file path="src/Pages/Budget.jsx">
+// src/Pages/Budget.jsx
+import React, { useState, useEffect, useCallback } from "react";
+import { FiTarget, FiPlus, FiTrash2, FiX, FiEdit2, FiArrowUpRight, FiRefreshCw } from "react-icons/fi";
+import { toast } from "react-hot-toast";
+import { getBudgetsApi, createBudgetApi, deleteBudgetApi, updateBudgetApi, getTransactionsApi } from "../api/authApi";
+
+const CATEGORIES = ["Housing","Food & Dining","Transport","Entertainment","Shopping","Utilities","Healthcare","Education","Savings","Rent","Groceries","Other"];
+const PALETTE    = ["#6366f1","#10b981","#f59e0b","#ef4444","#06b6d4","#8b5cf6","#ec4899","#14b8a6"];
+
+// ─── Budget Modal ─────────────────────────────────────────────
+const BudgetModal = ({ initial, onClose, onSaved }) => {
+  const editing = !!initial;
+  const [form, setForm]       = useState(initial || { category: "Housing", budget_amount: "", color: "#6366f1" });
+  const [loading, setLoading] = useState(false);
+  const set = (k, v) => setForm((f) => ({ ...f, [k]: v }));
+
+  const submit = async (e) => {
+    e.preventDefault();
+    if (!form.budget_amount || parseFloat(form.budget_amount) <= 0) return toast.error("Enter a valid budget amount");
+    setLoading(true);
+    try {
+      let data;
+      if (editing) {
+        ({ data } = await updateBudgetApi(initial.id, { ...form, budget_amount: parseFloat(form.budget_amount) }));
+        toast.success("Budget updated! ✅");
+      } else {
+        ({ data } = await createBudgetApi({ ...form, budget_amount: parseFloat(form.budget_amount) }));
+        toast.success("Budget created! 🎯");
+      }
+      onSaved(data, editing);
+      onClose();
+    } catch (err) {
+      toast.error(err.response?.data?.detail || "Failed to save budget");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/50 backdrop-blur-sm">
+      <div className="w-full max-w-md bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+        <div className="h-1 bg-gradient-to-r from-indigo-500 to-violet-500" />
+        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 dark:border-slate-800">
+          <h2 className="font-bold text-slate-900 dark:text-white" style={{ fontFamily: "'Playfair Display', serif" }}>
+            {editing ? "Edit Budget" : "New Budget"}
+          </h2>
+          <button onClick={onClose} className="text-slate-400 hover:text-slate-600 transition"><FiX size={20} /></button>
+        </div>
+        <form onSubmit={submit} className="p-6 space-y-4">
+          <div>
+            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Category</label>
+            <select value={form.category} onChange={(e) => set("category", e.target.value)}
+              className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm dark:text-white outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition">
+              {CATEGORIES.map((c) => <option key={c}>{c}</option>)}
+            </select>
+          </div>
+          <div>
+            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Budget Limit ($)</label>
+            <input type="number" min="1" step="0.01" value={form.budget_amount} onChange={(e) => set("budget_amount", e.target.value)} placeholder="e.g. 500"
+              className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm dark:text-white outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition" />
+          </div>
+          <div>
+            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-2">Color</label>
+            <div className="flex gap-2 flex-wrap">
+              {PALETTE.map((c) => (
+                <button key={c} type="button" onClick={() => set("color", c)}
+                  className={`w-8 h-8 rounded-full transition-transform ${form.color === c ? "scale-125 ring-2 ring-offset-2 ring-slate-400 dark:ring-slate-600" : "hover:scale-110"}`}
+                  style={{ backgroundColor: c }} />
+              ))}
+            </div>
+          </div>
+          <button type="submit" disabled={loading}
+            className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-60 text-white rounded-xl font-semibold text-sm transition">
+            {loading ? "Saving..." : editing ? "Save Changes" : "Create Budget"}
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+// ─── Budget Card with transactions drill-down ─────────────────
+const BudgetCard = ({ budget, transactions, onEdit, onDelete }) => {
+  const [expanded, setExpanded] = useState(false);
+
+  // Live spent from actual transactions
+  const liveSpent = transactions
+    .filter((t) => t.type === "expense" && t.category.toLowerCase() === budget.category.toLowerCase())
+    .reduce((s, t) => s + t.amount, 0);
+
+  const pct       = budget.budget_amount > 0 ? (liveSpent / budget.budget_amount) * 100 : 0;
+  const over      = liveSpent > budget.budget_amount;
+  const warn      = !over && pct > 80;
+  const remaining = Math.max(0, budget.budget_amount - liveSpent);
+
+  // Related transactions for this category
+  const related = transactions
+    .filter((t) => t.type === "expense" && t.category.toLowerCase() === budget.category.toLowerCase())
+    .slice(0, 5);
+
+  const barColor = over ? "#ef4444" : warn ? "#f59e0b" : budget.color;
+
+  return (
+    <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+      {/* Card top */}
+      <div className="p-5">
+        <div className="flex items-start justify-between mb-4">
+          <div className="flex items-center gap-3">
+            <span className="w-11 h-11 rounded-xl flex items-center justify-center text-white text-base font-bold shadow-sm" style={{ backgroundColor: budget.color }}>
+              {budget.category[0]}
+            </span>
+            <div>
+              <p className="font-semibold text-slate-800 dark:text-slate-200">{budget.category}</p>
+              <div className="flex items-center gap-1.5 mt-0.5">
+                {over ? (
+                  <span className="text-xs bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 px-2 py-0.5 rounded-full font-medium">Over Budget!</span>
+                ) : warn ? (
+                  <span className="text-xs bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 px-2 py-0.5 rounded-full font-medium">Almost full</span>
+                ) : (
+                  <span className="text-xs bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 px-2 py-0.5 rounded-full font-medium">On track</span>
+                )}
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <button onClick={() => onEdit(budget)} className="p-1.5 text-slate-400 hover:text-indigo-500 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 rounded-lg transition">
+              <FiEdit2 size={14} />
+            </button>
+            <button onClick={() => onDelete(budget.id)} className="p-1.5 text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition">
+              <FiTrash2 size={14} />
+            </button>
+          </div>
+        </div>
+
+        {/* Amounts */}
+        <div className="grid grid-cols-3 gap-3 mb-3">
+          <div className="text-center">
+            <p className="text-xs text-slate-400 mb-0.5">Spent</p>
+            <p className={`text-sm font-bold ${over ? "text-red-500" : "text-slate-800 dark:text-slate-200"}`}>${liveSpent.toFixed(2)}</p>
+          </div>
+          <div className="text-center border-x border-slate-100 dark:border-slate-800">
+            <p className="text-xs text-slate-400 mb-0.5">Limit</p>
+            <p className="text-sm font-bold text-slate-800 dark:text-slate-200">${budget.budget_amount.toFixed(2)}</p>
+          </div>
+          <div className="text-center">
+            <p className="text-xs text-slate-400 mb-0.5">Remaining</p>
+            <p className={`text-sm font-bold ${over ? "text-red-500" : remaining < budget.budget_amount * 0.2 ? "text-amber-500" : "text-emerald-600"}`}>
+              {over ? `-$${(liveSpent - budget.budget_amount).toFixed(2)}` : `$${remaining.toFixed(2)}`}
+            </p>
+          </div>
+        </div>
+
+        {/* Progress bar */}
+        <div className="w-full h-2.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden mb-1.5">
+          <div className="h-full rounded-full transition-all duration-500"
+            style={{ width: `${Math.min(pct, 100)}%`, backgroundColor: barColor }} />
+        </div>
+        <p className="text-xs text-slate-400">{pct.toFixed(0)}% used</p>
+      </div>
+
+      {/* Expandable transactions */}
+      {related.length > 0 && (
+        <div className="border-t border-slate-100 dark:border-slate-800">
+          <button onClick={() => setExpanded((v) => !v)}
+            className="w-full px-5 py-2.5 flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
+            <span>{related.length} expense{related.length !== 1 ? "s" : ""} in this category</span>
+            <FiArrowUpRight size={14} className={`transition-transform ${expanded ? "rotate-90" : ""}`} />
+          </button>
+
+          {expanded && (
+            <div className="px-5 pb-4 space-y-2">
+              {related.map((tx) => (
+                <div key={tx.id} className="flex items-center justify-between py-1.5 border-b border-slate-50 dark:border-slate-800 last:border-0">
+                  <div>
+                    <p className="text-xs font-medium text-slate-700 dark:text-slate-300">{tx.label}</p>
+                    <p className="text-xs text-slate-400">{tx.date}</p>
+                  </div>
+                  <span className="text-xs font-bold text-red-500">-${tx.amount.toFixed(2)}</span>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+};
+
+// ─── Main Budget Page ─────────────────────────────────────────
+const Budget = () => {
+  const [budgets,      setBudgets]      = useState([]);
+  const [transactions, setTransactions] = useState([]);
+  const [loading,      setLoading]      = useState(true);
+  const [modal,        setModal]        = useState(null); // null | "add" | budget-obj
+
+  const loadAll = useCallback(async () => {
+    setLoading(true);
+    try {
+      const [bRes, tRes] = await Promise.all([getBudgetsApi(), getTransactionsApi()]);
+      setBudgets(bRes.data);
+      setTransactions(tRes.data);
+    } catch {
+      toast.error("Failed to load data");
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => { loadAll(); }, [loadAll]);
+
+  const handleDelete = async (id) => {
+    try {
+      await deleteBudgetApi(id);
+      setBudgets((b) => b.filter((x) => x.id !== id));
+      toast.success("Budget removed");
+    } catch {
+      toast.error("Failed to delete");
+    }
+  };
+
+  const handleSaved = (item, editing) => {
+    if (editing) setBudgets((b) => b.map((x) => x.id === item.id ? item : x));
+    else         setBudgets((b) => [...b, item]);
+  };
+
+  // Live totals computed from actual transactions
+  const totalBudget = budgets.reduce((a, b) => a + b.budget_amount, 0);
+  const totalSpent  = budgets.reduce((a, b) => {
+    return a + transactions
+      .filter((t) => t.type === "expense" && t.category.toLowerCase() === b.category.toLowerCase())
+      .reduce((s, t) => s + t.amount, 0);
+  }, 0);
+  const overallPct  = totalBudget > 0 ? (totalSpent / totalBudget) * 100 : 0;
+
+  return (
+    <div className="space-y-6" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+      {modal && (
+        <BudgetModal
+          initial={modal === "add" ? null : modal}
+          onClose={() => setModal(null)}
+          onSaved={handleSaved}
+        />
+      )}
+
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div>
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-white" style={{ fontFamily: "'Playfair Display', serif" }}>Budget</h1>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-0.5">
+            {new Date().toLocaleString("default", { month: "long", year: "numeric" })} · live from your transactions
+          </p>
+        </div>
+        <div className="flex items-center gap-2">
+          <button onClick={loadAll}
+            className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+            <FiRefreshCw size={16} className={loading ? "animate-spin" : ""} />
+          </button>
+          <button onClick={() => setModal("add")}
+            className="flex items-center gap-2 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-sm font-semibold transition shadow-sm shadow-indigo-200 dark:shadow-none">
+            <FiPlus size={16} /> Add Budget
+          </button>
+        </div>
+      </div>
+
+      {/* Overall progress bar */}
+      {budgets.length > 0 && (
+        <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5">
+          <div className="flex justify-between text-sm font-medium mb-2">
+            <span className="text-slate-600 dark:text-slate-400">Overall Spending</span>
+            <span className="text-slate-900 dark:text-white">
+              ${totalSpent.toFixed(2)}
+              <span className="text-slate-400 font-normal"> / ${totalBudget.toFixed(2)}</span>
+            </span>
+          </div>
+          <div className="w-full h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+            <div className={`h-full rounded-full transition-all duration-500 ${overallPct > 100 ? "bg-red-500" : "bg-gradient-to-r from-indigo-500 to-violet-500"}`}
+              style={{ width: `${Math.min(overallPct, 100)}%` }} />
+          </div>
+          <div className="flex justify-between mt-2">
+            <p className="text-xs text-slate-400">{overallPct.toFixed(1)}% of total budget used</p>
+            <p className="text-xs font-medium text-emerald-600 dark:text-emerald-400">
+              ${Math.max(0, totalBudget - totalSpent).toFixed(2)} remaining
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Budget cards */}
+      {loading ? (
+        <div className="text-center text-slate-400 text-sm py-12">Loading budgets...</div>
+      ) : budgets.length === 0 ? (
+        <div className="text-center py-16 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800">
+          <FiTarget size={40} className="mx-auto text-slate-300 dark:text-slate-600 mb-3" />
+          <p className="text-slate-500 dark:text-slate-400 font-medium">No budgets yet</p>
+          <p className="text-slate-400 text-sm mt-1">Click "Add Budget" to set your first spending limit</p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+          {budgets.map((b) => (
+            <BudgetCard
+              key={b.id}
+              budget={b}
+              transactions={transactions}
+              onEdit={setModal}
+              onDelete={handleDelete}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Budget;
+</file>
+
+<file path="src/Pages/Cards.jsx">
+// src/Pages/Cards.jsx
+import React, { useState } from "react";
+import { FiCreditCard, FiPlus, FiTrash2, FiEye, FiEyeOff, FiWifi } from "react-icons/fi";
+import { toast } from "react-hot-toast";
+
+const CARD_GRADIENTS = [
+  "from-indigo-600 to-violet-600",
+  "from-slate-700 to-slate-900",
+  "from-rose-500 to-pink-600",
+  "from-emerald-500 to-teal-600",
+];
+
+const defaultCards = [
+  { id: 1, name: "Personal Visa",    number: "4532 •••• •••• 7821", holder: "John Doe",  expiry: "08/27", balance: 4250.0,  gradient: 0, type: "Visa" },
+  { id: 2, name: "Business Master",  number: "5412 •••• •••• 3390", holder: "John Doe",  expiry: "11/26", balance: 12800.5, gradient: 1, type: "Mastercard" },
+];
+
+// ── Card visual ───────────────────────────────────────────
+const CardVisual = ({ card, reveal, onToggle }) => (
+  <div className={`relative bg-gradient-to-br ${CARD_GRADIENTS[card.gradient]} rounded-3xl p-6 text-white shadow-xl shadow-black/20 aspect-[1.586/1] flex flex-col justify-between overflow-hidden`}>
+    {/* Background pattern */}
+    <div className="absolute top-0 right-0 w-48 h-48 rounded-full bg-white/5 -translate-y-16 translate-x-16" />
+    <div className="absolute bottom-0 left-0 w-32 h-32 rounded-full bg-white/5 translate-y-10 -translate-x-10" />
+
+    <div className="flex items-start justify-between relative z-10">
+      <div>
+        <p className="text-xs text-white/60 font-medium uppercase tracking-widest">{card.name}</p>
+        <p className="text-xl font-bold mt-0.5">${card.balance.toLocaleString("en-US", { minimumFractionDigits: 2 })}</p>
+      </div>
+      <FiWifi size={22} className="rotate-90 text-white/70" />
+    </div>
+
+    <div className="relative z-10">
+      <div className="flex items-center gap-3 mb-4">
+        <div className="w-10 h-7 bg-yellow-400/80 rounded-md" />
+        <p className="font-mono text-sm tracking-widest">
+          {reveal ? "4532 1234 5678 7821" : card.number}
+        </p>
+        <button onClick={onToggle} className="text-white/60 hover:text-white ml-auto">
+          {reveal ? <FiEyeOff size={16} /> : <FiEye size={16} />}
+        </button>
+      </div>
+      <div className="flex items-end justify-between">
+        <div>
+          <p className="text-xs text-white/50 uppercase tracking-wider mb-0.5">Card Holder</p>
+          <p className="text-sm font-semibold">{card.holder}</p>
+        </div>
+        <div className="text-right">
+          <p className="text-xs text-white/50 uppercase tracking-wider mb-0.5">Expires</p>
+          <p className="text-sm font-semibold">{card.expiry}</p>
+        </div>
+        <p className="text-lg font-bold text-white/80">{card.type}</p>
+      </div>
+    </div>
+  </div>
+);
+
+// ── Add Card Modal ────────────────────────────────────────
+const AddCardModal = ({ onClose, onAdded }) => {
+  const [form, setForm] = useState({ name: "", holder: "", number: "", expiry: "", balance: "", gradient: 0, type: "Visa" });
+  const set = (k, v) => setForm((f) => ({ ...f, [k]: v }));
+
+  const submit = (e) => {
+    e.preventDefault();
+    if (!form.name || !form.holder || !form.number) return toast.error("Fill all fields");
+    const last4 = form.number.replace(/\s/g, "").slice(-4);
+    onAdded({ ...form, id: Date.now(), number: `•••• •••• •••• ${last4}`, balance: parseFloat(form.balance) || 0 });
+    toast.success("Card added!");
+    onClose();
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/40 backdrop-blur-sm">
+      <div className="w-full max-w-md bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+        <div className="h-1 bg-gradient-to-r from-indigo-500 to-pink-500" />
+        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 dark:border-slate-800">
+          <h2 className="font-bold text-slate-900 dark:text-white" style={{ fontFamily: "'Playfair Display', serif" }}>Add New Card</h2>
+          <button onClick={onClose} className="text-slate-400 hover:text-slate-600"><FiCreditCard size={18} /></button>
+        </div>
+        <form onSubmit={submit} className="p-6 space-y-4">
+          {[
+            { label: "Card Nickname",  key: "name",   placeholder: "e.g. Personal Visa" },
+            { label: "Card Holder",    key: "holder", placeholder: "Full name on card" },
+            { label: "Card Number",    key: "number", placeholder: "1234 5678 9012 3456", maxLength: 19 },
+            { label: "Expiry",         key: "expiry", placeholder: "MM/YY" },
+            { label: "Current Balance",key: "balance",placeholder: "0.00", type: "number" },
+          ].map(({ label, key, placeholder, type = "text", maxLength }) => (
+            <div key={key}>
+              <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1">{label}</label>
+              <input type={type} value={form[key]} onChange={(e) => set(key, e.target.value)} placeholder={placeholder} maxLength={maxLength}
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm dark:text-white outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition" />
+            </div>
+          ))}
+          <div>
+            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-2">Card Color</label>
+            <div className="flex gap-2">
+              {CARD_GRADIENTS.map((g, i) => (
+                <button key={i} type="button" onClick={() => set("gradient", i)}
+                  className={`w-8 h-8 rounded-full bg-gradient-to-br ${g} transition-transform ${form.gradient === i ? "scale-125 ring-2 ring-offset-2 ring-slate-400" : "hover:scale-110"}`} />
+              ))}
+            </div>
+          </div>
+          <button type="submit" className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-semibold text-sm transition">
+            Add Card
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+// ── Main Page ─────────────────────────────────────────────
+const Cards = () => {
+  const [cards, setCards]       = useState(defaultCards);
+  const [reveals, setReveals]   = useState({});
+  const [showModal, setShowModal] = useState(false);
+
+  const toggleReveal = (id) => setReveals((r) => ({ ...r, [id]: !r[id] }));
+  const deleteCard   = (id) => { setCards((c) => c.filter((x) => x.id !== id)); toast.success("Card removed"); };
+
+  const totalBalance = cards.reduce((s, c) => s + c.balance, 0);
+
+  return (
+    <div className="space-y-6" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+      {showModal && <AddCardModal onClose={() => setShowModal(false)} onAdded={(c) => setCards((p) => [...p, c])} />}
+
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-white" style={{ fontFamily: "'Playfair Display', serif" }}>My Cards</h1>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-0.5">Total balance: <span className="font-semibold text-indigo-600 dark:text-indigo-400">${totalBalance.toLocaleString("en-US", { minimumFractionDigits: 2 })}</span></p>
+        </div>
+        <button onClick={() => setShowModal(true)}
+          className="flex items-center gap-2 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-sm font-semibold transition">
+          <FiPlus size={16} /> Add Card
+        </button>
+      </div>
+
+      {/* Cards grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {cards.map((card) => (
+          <div key={card.id}>
+            <CardVisual card={card} reveal={!!reveals[card.id]} onToggle={() => toggleReveal(card.id)} />
+            <div className="mt-3 flex items-center justify-between px-1">
+              <p className="text-xs text-slate-400">Click eye to {reveals[card.id] ? "hide" : "reveal"} number</p>
+              <button onClick={() => deleteCard(card.id)} className="flex items-center gap-1.5 text-xs text-red-500 hover:text-red-600 font-medium transition">
+                <FiTrash2 size={13} /> Remove
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Quick stats */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        {[
+          { label: "Total Cards",     value: cards.length },
+          { label: "Highest Balance", value: `$${Math.max(...cards.map((c) => c.balance)).toLocaleString()}` },
+          { label: "Active Cards",    value: cards.length },
+          { label: "Combined Limit",  value: "$50,000" },
+        ].map((s) => (
+          <div key={s.label} className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-4 text-center">
+            <p className="text-xl font-bold text-slate-900 dark:text-white">{s.value}</p>
+            <p className="text-xs text-slate-400 mt-0.5">{s.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Cards;
+</file>
+
+<file path="src/Pages/ForgetPassword.jsx">
+// src/Pages/ForgotPassword.jsx
+import React from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { Link } from "react-router-dom";
+import { FiMail, FiArrowLeft } from "react-icons/fi";
+import { toast } from "react-hot-toast";
+import { forgetPasswordApi } from "../api/authApi";
+
+const ForgotPassword = () => {
+  const formik = useFormik({
+    initialValues: { email: "" },
+    validationSchema: Yup.object({ email: Yup.string().email("Invalid email").required("Required") }),
+    onSubmit: async (values, { setSubmitting, resetForm }) => {
+      try {
+        await forgetPasswordApi({ email: values.email });
+        toast.success("Reset link sent! Check your email. 📧", { duration: 5000 });
+        resetForm();
+      } catch (err) {
+        const msg = (err.response?.data?.detail || "").toLowerCase();
+        if (msg.includes("not exist") || msg.includes("email")) toast.error("No account found with this email.", { icon: "👤" });
+        else if (msg.includes("deactivated") || msg.includes("inactive")) toast.error("This account is deactivated.", { icon: "🔒" });
+        else toast.error(err.response?.data?.detail || "Something went wrong");
+      } finally { setSubmitting(false); }
+    },
+  });
+
+  return (
+    <div className="flex items-center justify-center min-h-[80vh] px-4" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+      <div className="w-full max-w-md">
+        <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+          <div className="h-1.5 bg-gradient-to-r from-amber-400 via-orange-500 to-red-500" />
+          <div className="p-8">
+            <div className="text-center mb-8">
+              <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-amber-50 dark:bg-amber-900/20 flex items-center justify-center">
+                <FiMail size={26} className="text-amber-600 dark:text-amber-400" />
+              </div>
+              <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Forgot Password?
+              </h2>
+              <p className="text-sm text-slate-500 dark:text-slate-400">
+                Enter your email and we'll send you a reset link
+              </p>
+            </div>
+
+            <form onSubmit={formik.handleSubmit} className="space-y-4">
+              <div>
+                <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5 uppercase tracking-wide">Email Address</label>
+                <div className="relative">
+                  <FiMail className="absolute left-3.5 top-3.5 text-slate-400" size={16} />
+                  <input name="email" type="email" placeholder="you@example.com"
+                    className={`w-full pl-10 pr-4 py-3 rounded-xl border text-sm bg-slate-50 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-amber-500/30 focus:border-amber-500 outline-none transition ${formik.touched.email && formik.errors.email ? "border-red-400" : "border-slate-200 dark:border-slate-700"}`}
+                    {...formik.getFieldProps("email")} />
+                </div>
+                {formik.touched.email && formik.errors.email && <p className="text-red-500 text-xs mt-1">{formik.errors.email}</p>}
+              </div>
+
+              <button type="submit" disabled={formik.isSubmitting}
+                className="w-full py-3 bg-amber-500 hover:bg-amber-600 disabled:opacity-60 text-white rounded-xl font-semibold text-sm transition shadow-md shadow-amber-200 dark:shadow-none">
+                {formik.isSubmitting ? "Sending..." : "Send Reset Link"}
+              </button>
+            </form>
+
+            <Link to="/login" className="flex items-center justify-center gap-2 mt-6 text-sm text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+              <FiArrowLeft size={14} /> Back to Login
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ForgotPassword;
+</file>
+
+<file path="src/Pages/Home.jsx">
+// src/Pages/Home.jsx
+import React from "react";
+import { FiDollarSign, FiTrendingUp, FiTrendingDown, FiCreditCard, FiArrowUpRight, FiArrowDownLeft } from "react-icons/fi";
+import { Line, Doughnut } from "react-chartjs-2";
+import {
+  Chart as ChartJS, CategoryScale, LinearScale, PointElement,
+  LineElement, Tooltip, Legend, ArcElement,
+} from "chart.js";
+
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend, ArcElement);
+
+const stats = [
+  {
+    title: "Total Balance",
+    value: "$12,450",
+    change: "+2.4%",
+    up: true,
+    icon: FiDollarSign,
+    gradient: "from-indigo-500 to-violet-600",
+    light: "bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400",
+  },
+  {
+    title: "Monthly Income",
+    value: "$3,000",
+    change: "+5.1%",
+    up: true,
+    icon: FiTrendingUp,
+    gradient: "from-emerald-400 to-teal-600",
+    light: "bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400",
+  },
+  {
+    title: "Monthly Expenses",
+    value: "$1,570",
+    change: "-1.8%",
+    up: false,
+    icon: FiTrendingDown,
+    gradient: "from-rose-400 to-red-600",
+    light: "bg-rose-50 dark:bg-rose-900/20 text-rose-600 dark:text-rose-400",
+  },
+  {
+    title: "EMI Due",
+    value: "$1,250",
+    change: "Next: Mar 1",
+    up: null,
+    icon: FiCreditCard,
+    gradient: "from-amber-400 to-orange-500",
+    light: "bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400",
+  },
+];
+
+const recentTx = [
+  { label: "Salary Credit",      amount: "+$3,000", type: "income",  date: "Today",     cat: "Income" },
+  { label: "Netflix",            amount: "-$15",    type: "expense", date: "Yesterday", cat: "Entertainment" },
+  { label: "Grocery Store",      amount: "-$82",    type: "expense", date: "Feb 24",    cat: "Food" },
+  { label: "Freelance Payment",  amount: "+$450",   type: "income",  date: "Feb 23",    cat: "Freelance" },
+];
+
+const lineData = {
+  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+  datasets: [
+    {
+      label: "Income",
+      data: [2800, 3000, 2900, 3200, 3000, 3400],
+      borderColor: "#6366f1",
+      backgroundColor: "rgba(99,102,241,0.08)",
+      tension: 0.4,
+      fill: true,
+      pointRadius: 4,
+      pointBackgroundColor: "#6366f1",
+    },
+    {
+      label: "Expenses",
+      data: [1600, 1400, 1700, 1500, 1570, 1480],
+      borderColor: "#ef4444",
+      backgroundColor: "rgba(239,68,68,0.05)",
+      tension: 0.4,
+      fill: true,
+      pointRadius: 4,
+      pointBackgroundColor: "#ef4444",
+    },
+  ],
+};
+
+const doughnutData = {
+  labels: ["Housing", "Food", "Transport", "Entertainment", "Savings"],
+  datasets: [{
+    data: [35, 20, 15, 10, 20],
+    backgroundColor: ["#6366f1", "#10b981", "#f59e0b", "#ef4444", "#06b6d4"],
+    borderWidth: 0,
+    hoverOffset: 6,
+  }],
+};
+
+const chartOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: {
+      labels: { color: "#94a3b8", font: { size: 12 } },
+    },
+  },
+  scales: {
+    x: { grid: { color: "rgba(148,163,184,0.1)" }, ticks: { color: "#94a3b8" } },
+    y: { grid: { color: "rgba(148,163,184,0.1)" }, ticks: { color: "#94a3b8" } },
+  },
+};
+
+const Home = () => (
+  <div className="space-y-6" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+    {/* Page title */}
+    <div>
+      <h1 className="text-2xl font-bold text-slate-900 dark:text-white" style={{ fontFamily: "'Playfair Display', serif" }}>
+        Dashboard
+      </h1>
+      <p className="text-sm text-slate-500 dark:text-slate-400 mt-0.5">
+        Here's your financial overview for February 2026
+      </p>
+    </div>
+
+    {/* Stat cards */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+      {stats.map((s, i) => (
+        <div key={i} className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 hover:shadow-md transition-shadow">
+          <div className="flex items-center justify-between mb-4">
+            <span className={`p-2.5 rounded-xl ${s.light}`}>
+              <s.icon size={18} />
+            </span>
+            {s.up !== null ? (
+              <span className={`text-xs font-semibold px-2 py-1 rounded-full ${s.up ? "bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600" : "bg-red-50 dark:bg-red-900/20 text-red-500"}`}>
+                {s.change}
+              </span>
+            ) : (
+              <span className="text-xs font-medium text-slate-400">{s.change}</span>
+            )}
+          </div>
+          <p className="text-2xl font-bold text-slate-900 dark:text-white">{s.value}</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{s.title}</p>
+        </div>
+      ))}
+    </div>
+
+    {/* Charts row */}
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <div className="lg:col-span-2 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5">
+        <h3 className="font-semibold text-slate-700 dark:text-slate-200 mb-4">Income vs Expenses</h3>
+        <div className="h-60">
+          <Line data={lineData} options={chartOptions} />
+        </div>
+      </div>
+      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5">
+        <h3 className="font-semibold text-slate-700 dark:text-slate-200 mb-4">Spending Breakdown</h3>
+        <div className="h-60">
+          <Doughnut data={doughnutData} options={{ responsive: true, maintainAspectRatio: false, plugins: { legend: { position: "bottom", labels: { color: "#94a3b8", font: { size: 11 }, padding: 10 } } } }} />
+        </div>
+      </div>
+    </div>
+
+    {/* Recent transactions */}
+    <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+      <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100 dark:border-slate-800">
+        <h3 className="font-semibold text-slate-700 dark:text-slate-200">Recent Transactions</h3>
+        <a href="/transaction" className="text-xs text-indigo-600 dark:text-indigo-400 hover:underline font-medium">View all</a>
+      </div>
+      <div className="divide-y divide-slate-100 dark:divide-slate-800">
+        {recentTx.map((tx, i) => (
+          <div key={i} className="flex items-center justify-between px-5 py-3.5 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
+            <div className="flex items-center gap-3">
+              <div className={`p-2 rounded-xl ${tx.type === "income" ? "bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600" : "bg-red-50 dark:bg-red-900/20 text-red-500"}`}>
+                {tx.type === "income" ? <FiArrowDownLeft size={15} /> : <FiArrowUpRight size={15} />}
+              </div>
+              <div>
+                <p className="text-sm font-medium text-slate-800 dark:text-slate-200">{tx.label}</p>
+                <p className="text-xs text-slate-400">{tx.date} · {tx.cat}</p>
+              </div>
+            </div>
+            <span className={`text-sm font-bold ${tx.type === "income" ? "text-emerald-600" : "text-red-500"}`}>
+              {tx.amount}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
+export default Home;
+</file>
+
+<file path="src/Pages/Login.jsx">
+// src/Pages/Login.jsx
+import React, { useState } from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { useDispatch } from "react-redux";
+import { setCredentials } from "../Context/ContextSlices/authReader";
+import { useNavigate, Link } from "react-router-dom";
+import { FiMail, FiLock, FiArrowRight, FiHash } from "react-icons/fi";
+import { toast } from "react-hot-toast";
+import { loginApi } from "../api/authApi";
+
+const Login = () => {
+  const dispatch  = useDispatch();
+  const navigate  = useNavigate();
+  const [showOtp, setShowOtp] = useState(false);
+
+  const validationSchema = Yup.object({
+    email:    Yup.string().email("Invalid email address").required("Email is required"),
+    password: Yup.string().min(6, "At least 6 characters").required("Required"),
+    otp:      Yup.string().when([], {
+      is:        () => showOtp,
+      then:      (s) => s.matches(/^\d{6}$/, "OTP must be exactly 6 digits").required("OTP is required"),
+      otherwise: (s) => s.notRequired(),
+    }),
+  });
+
+  const formik = useFormik({
+    initialValues: { email: "", password: "", otp: "" },
+    validationSchema,
+    onSubmit: async (values, { setSubmitting }) => {
+      try {
+        const payload = { email: values.email, password: values.password };
+        if (showOtp && values.otp) payload.otp = values.otp;
+
+        const { data } = await loginApi(payload);
+
+        // Backend returns { access_token, token_type } — no user object
+        // Decode email from JWT payload (middle part, base64)
+        let userObj = { email: values.email };
+        try {
+          const jwtPayload = JSON.parse(atob(data.access_token.split(".")[1]));
+          userObj = { email: jwtPayload.sub };
+        } catch {
+          // fallback to form email if decode fails
+        }
+
+        dispatch(setCredentials({ user: userObj, token: data.access_token }));
+        toast.success(`Welcome back! 🎉`);
+        navigate("/dashboard");
+
+      } catch (err) {
+        const message = (err.response?.data?.detail || "").toLowerCase();
+        const status  = err.response?.status;
+
+        if (message.includes("otp") && (message.includes("invalid") || message.includes("incorrect") || message.includes("wrong"))) {
+          // Case 1 — OTP is wrong
+          toast.error("Invalid OTP. Please double-check and try again.", { icon: "🔐", duration: 4500 });
+
+        } else if (message.includes("not verified") || message.includes("valid first") || message.includes("please valid")) {
+          // Case 2 — Email not verified (matches: "please valid first")
+          toast.error("Email not verified. Please verify your email first.", { icon: "📧", duration: 5000 });
+
+        } else if (
+          message.includes("inactive") ||
+          message.includes("deactivated") ||
+          message.includes("invalid credential") ||
+          status === 400 || status === 404
+        ) {
+          // Case 3 — No active user / wrong credentials
+          toast.error("Invalid credentials or inactive account.", { icon: "👤", duration: 4500 });
+
+        } else {
+          toast.error(err.response?.data?.detail || "Login failed. Please try again.");
+        }
+      } finally {
+        setSubmitting(false);
+      }
+    },
+  });
+
+  const toggleOtp = () => {
+    setShowOtp((v) => !v);
+    formik.setFieldValue("otp", "");
+    formik.setFieldTouched("otp", false);
+  };
+
+  return (
+    <div
+      className="flex items-center justify-center min-h-[80vh] px-4"
+      style={{ fontFamily: "'DM Sans', sans-serif" }}
+    >
+      <div className="w-full max-w-md">
+        <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+          {/* Accent bar */}
+          <div className="h-1.5 bg-gradient-to-r from-indigo-500 via-violet-500 to-cyan-500" />
+
+          <div className="p-8">
+            <div className="mb-8 text-center">
+              <h2
+                className="text-3xl font-bold text-slate-900 dark:text-white mb-1"
+                style={{ fontFamily: "'Playfair Display', serif" }}
+              >
+                Welcome Back
+              </h2>
+              <p className="text-sm text-slate-500 dark:text-slate-400">
+                Sign in to continue to FinanceHub
+              </p>
+            </div>
+
+            <form onSubmit={formik.handleSubmit} className="space-y-4">
+
+              {/* ── Email ── */}
+              <div>
+                <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5 uppercase tracking-wide">
+                  Email
+                </label>
+                <div className="relative">
+                  <FiMail className="absolute left-3.5 top-3.5 text-slate-400" size={16} />
+                  <input
+                    name="email"
+                    type="email"
+                    placeholder="you@example.com"
+                    className={`w-full pl-10 pr-4 py-3 rounded-xl border text-sm bg-slate-50 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 outline-none transition ${
+                      formik.touched.email && formik.errors.email ? "border-red-400" : "border-slate-200 dark:border-slate-700"
+                    }`}
+                    {...formik.getFieldProps("email")}
+                  />
+                </div>
+                {formik.touched.email && formik.errors.email && (
+                  <p className="text-red-500 text-xs mt-1">{formik.errors.email}</p>
+                )}
+              </div>
+
+              {/* ── Password ── */}
+              <div>
+                <div className="flex justify-between mb-1.5">
+                  <label className="text-xs font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wide">
+                    Password
+                  </label>
+                  <Link to="/forgot-password" className="text-xs text-indigo-600 dark:text-indigo-400 hover:underline">
+                    Forgot?
+                  </Link>
+                </div>
+                <div className="relative">
+                  <FiLock className="absolute left-3.5 top-3.5 text-slate-400" size={16} />
+                  <input
+                    name="password"
+                    type="password"
+                    placeholder="••••••••"
+                    className={`w-full pl-10 pr-4 py-3 rounded-xl border text-sm bg-slate-50 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 outline-none transition ${
+                      formik.touched.password && formik.errors.password ? "border-red-400" : "border-slate-200 dark:border-slate-700"
+                    }`}
+                    {...formik.getFieldProps("password")}
+                  />
+                </div>
+                {formik.touched.password && formik.errors.password && (
+                  <p className="text-red-500 text-xs mt-1">{formik.errors.password}</p>
+                )}
+              </div>
+
+              {/* <div>
+                <div className="flex items-center justify-between mb-1.5">
+                  <label className="text-xs font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wide">
+                    OTP
+                  </label>
+                  <button
+                    type="button"
+                    onClick={toggleOtp}
+                    className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:underline transition"
+                  >
+                    {showOtp ? "✕ Remove OTP" : "+ Enter OTP"}
+                  </button>
+                </div>
+
+                {/* Smooth slide-in */}
+                <div
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                    showOtp ? "max-h-24 opacity-100" : "max-h-0 opacity-0 pointer-events-none"
+                  }`}
+                >
+                  <div className="relative">
+                    <FiHash className="absolute left-3.5 top-3.5 text-slate-400" size={16} />
+                    <input
+                      name="otp"
+                      type="text"
+                      inputMode="numeric"
+                      maxLength={6}
+                      placeholder="_ _ _ _ _ _"
+                      autoComplete="one-time-code"
+                      className={`w-full pl-10 pr-4 py-3 rounded-xl border text-sm bg-slate-50 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 outline-none transition font-mono tracking-[0.6em] text-center ${
+                        formik.touched.otp && formik.errors.otp ? "border-red-400" : "border-slate-200 dark:border-slate-700"
+                      }`}
+                      {...formik.getFieldProps("otp")}
+                    />
+                  </div>
+                  {formik.touched.otp && formik.errors.otp && (
+                    <p className="text-red-500 text-xs mt-1">{formik.errors.otp}</p>
+                  )}
+                  <p className="text-xs text-slate-400 mt-1.5">
+                    Enter the 6-digit code sent to your device.
+                  </p>
+                </div>
+              {/* </div>  */}
+
+              {/* ── Submit ── */}
+              <button
+                type="submit"
+                disabled={formik.isSubmitting}
+                className="w-full py-3 mt-1 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-60 text-white rounded-xl font-semibold text-sm flex items-center justify-center gap-2 transition shadow-md shadow-indigo-200 dark:shadow-indigo-900/20"
+              >
+                {formik.isSubmitting ? (
+                  <>
+                    <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                    </svg>
+                    Signing in...
+                  </>
+                ) : (
+                  <> Sign In <FiArrowRight size={16} /> </>
+                )}
+              </button>
+            </form>
+
+            <p className="mt-6 text-center text-sm text-slate-500">
+              Don&apos;t have an account?{" "}
+              <Link to="/signup" className="text-indigo-600 dark:text-indigo-400 font-semibold hover:underline">
+                Create one
+              </Link>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Login;
+</file>
+
+<file path="src/Pages/MainDashboard.jsx">
+// src/Pages/MainDashboard.jsx
+import { useState } from "react";
+import { Outlet, useLocation } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+import Header from "../Components/Common/Header";
+import Sidebar from "../Components/Common/Sidebar";
+
+const AUTH_ROUTES = ["/login", "/signup", "/verify-email", "/forgot-password"];
+
+const MainLayout = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const { pathname } = useLocation();
+
+  const isAuthPage = AUTH_ROUTES.includes(pathname);
+
+  return (
+    <div className="flex flex-col h-screen overflow-hidden bg-gray-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+      {/* Toaster — global */}
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          duration: 3500,
+          style: {
+            borderRadius: "12px",
+            background: "var(--toast-bg, #1e293b)",
+            color: "var(--toast-color, #f1f5f9)",
+            fontSize: "0.875rem",
+            fontFamily: "'DM Sans', sans-serif",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.18)",
+            border: "1px solid rgba(99,102,241,0.2)",
+          },
+          success: {
+            iconTheme: { primary: "#6366f1", secondary: "#fff" },
+          },
+          error: {
+            iconTheme: { primary: "#ef4444", secondary: "#fff" },
+          },
+        }}
+      />
+
+      {/* Header — hidden on auth pages */}
+      {!isAuthPage && (
+        <header className="h-16 w-full bg-white dark:bg-slate-900 border-b border-gray-200 dark:border-slate-800 z-20 flex items-center px-2 shrink-0 transition-colors">
+          <Header onMenuToggle={() => setMenuOpen((v) => !v)} menuOpen={menuOpen} />
+        </header>
+      )}
+
+      <div className="flex flex-1 overflow-hidden">
+        {/* Sidebar — hidden on auth pages */}
+        {!isAuthPage && (
+          <Sidebar open={menuOpen} onClose={() => setMenuOpen(false)} />
+        )}
+
+        {/* Main content */}
+        <div className="flex flex-col flex-1 min-w-0 overflow-hidden">
+          <main className="flex-1 overflow-y-auto p-4 md:p-6 bg-gray-50 dark:bg-slate-950 transition-colors">
+            <Outlet />
+          </main>
+
+          {/* Footer — hidden on auth pages */}
+          {!isAuthPage && (
+            <footer className="bg-white dark:bg-slate-900 border-t border-gray-200 dark:border-slate-800 px-6 py-3 text-center text-xs text-gray-400 dark:text-slate-500 shrink-0 transition-colors">
+              © {new Date().getFullYear()} FinanceHub · Built with ♥
+            </footer>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default MainLayout;
+</file>
+
+<file path="src/Pages/Reports.jsx">
+// src/Pages/Reports.jsx
+import React, { useState, useEffect } from "react";
+import { FiDownload, FiCalendar, FiTrendingUp, FiTrendingDown, FiDollarSign } from "react-icons/fi";
+import { Bar, Pie } from "react-chartjs-2";
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, ArcElement, Tooltip, Legend } from "chart.js";
+import { getTransactionsApi } from "../api/authApi";
+import { toast } from "react-hot-toast";
+
+ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Tooltip, Legend);
+
+const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+const Reports = () => {
+  const [transactions, setTransactions] = useState([]);
+  const [loading, setLoading]           = useState(true);
+  const [period, setPeriod]             = useState("monthly"); // monthly | weekly
+
+  useEffect(() => {
+    getTransactionsApi()
+      .then(({ data }) => setTransactions(data))
+      .catch(() => toast.error("Failed to load data"))
+      .finally(() => setLoading(false));
+  }, []);
+
+  // ── Derived stats ──
+  const income  = transactions.filter((t) => t.type === "income").reduce((s, t) => s + t.amount, 0);
+  const expense = transactions.filter((t) => t.type === "expense").reduce((s, t) => s + t.amount, 0);
+  const net     = income - expense;
+  const savings = income > 0 ? ((net / income) * 100).toFixed(1) : "0.0";
+
+  // Monthly bar data
+  const monthlyData = MONTHS.map((_, mi) => {
+    const txs = transactions.filter((t) => new Date(t.date).getMonth() === mi);
+    return {
+      income:  txs.filter((t) => t.type === "income").reduce((s, t) => s + t.amount, 0),
+      expense: txs.filter((t) => t.type === "expense").reduce((s, t) => s + t.amount, 0),
+    };
+  });
+
+  const barData = {
+    labels: MONTHS,
+    datasets: [
+      { label: "Income",   data: monthlyData.map((d) => d.income),  backgroundColor: "rgba(99,102,241,0.8)",  borderRadius: 4 },
+      { label: "Expense",  data: monthlyData.map((d) => d.expense), backgroundColor: "rgba(239,68,68,0.7)",   borderRadius: 4 },
+    ],
+  };
+
+  // Pie by category
+  const catMap = {};
+  transactions.filter((t) => t.type === "expense").forEach((t) => {
+    catMap[t.category] = (catMap[t.category] || 0) + t.amount;
+  });
+  const cats = Object.entries(catMap).sort((a, b) => b[1] - a[1]).slice(0, 7);
+  const pieData = {
+    labels: cats.map(([k]) => k),
+    datasets: [{ data: cats.map(([, v]) => v), backgroundColor: ["#6366f1","#10b981","#f59e0b","#ef4444","#06b6d4","#8b5cf6","#ec4899"], borderWidth: 0 }],
+  };
+
+  const chartOpts = {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: "#94a3b8", font: { size: 11 } } } },
+    scales: {
+      x: { grid: { color: "rgba(148,163,184,0.1)" }, ticks: { color: "#94a3b8" } },
+      y: { grid: { color: "rgba(148,163,184,0.1)" }, ticks: { color: "#94a3b8" } },
+    },
+  };
+
+  const handleExport = () => {
+    const csv = ["Date,Label,Category,Type,Amount",
+      ...transactions.map((t) => `${t.date},${t.label},${t.category},${t.type},${t.amount}`)
+    ].join("\n");
+    const blob = new Blob([csv], { type: "text/csv" });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement("a"); a.href = url; a.download = "transactions.csv"; a.click();
+    URL.revokeObjectURL(url);
+    toast.success("Report exported!");
+  };
+
+  return (
+    <div className="space-y-6" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div>
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-white" style={{ fontFamily: "'Playfair Display', serif" }}>Reports</h1>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-0.5">Financial summary & export</p>
+        </div>
+        <button onClick={handleExport}
+          className="flex items-center gap-2 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-sm font-semibold transition">
+          <FiDownload size={16} /> Export CSV
+        </button>
+      </div>
+
+      {/* Summary stats */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        {[
+          { label: "Total Income",   value: `$${income.toFixed(2)}`,   icon: FiTrendingUp,   color: "text-emerald-600", bg: "bg-emerald-50 dark:bg-emerald-900/20" },
+          { label: "Total Expenses", value: `$${expense.toFixed(2)}`,  icon: FiTrendingDown, color: "text-red-500",     bg: "bg-red-50 dark:bg-red-900/20" },
+          { label: "Net Balance",    value: `$${Math.abs(net).toFixed(2)}`, icon: FiDollarSign, color: net >= 0 ? "text-indigo-600" : "text-red-500", bg: "bg-indigo-50 dark:bg-indigo-900/20" },
+          { label: "Savings Rate",   value: `${savings}%`,             icon: FiCalendar,     color: "text-amber-600",  bg: "bg-amber-50 dark:bg-amber-900/20" },
+        ].map((s) => (
+          <div key={s.label} className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5">
+            <span className={`p-2 rounded-xl ${s.bg} ${s.color} inline-flex mb-3`}><s.icon size={16} /></span>
+            <p className={`text-xl font-bold ${s.color}`}>{s.value}</p>
+            <p className="text-xs text-slate-400 mt-0.5">{s.label}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Charts */}
+      {loading ? (
+        <div className="text-center py-12 text-slate-400 text-sm">Loading charts...</div>
+      ) : (
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div className="lg:col-span-2 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5">
+            <h3 className="font-semibold text-slate-700 dark:text-slate-200 mb-4">Monthly Income vs Expenses</h3>
+            <div className="h-64"><Bar data={barData} options={chartOpts} /></div>
+          </div>
+          <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5">
+            <h3 className="font-semibold text-slate-700 dark:text-slate-200 mb-4">Spending by Category</h3>
+            {cats.length > 0 ? (
+              <div className="h-64">
+                <Pie data={pieData} options={{ responsive: true, maintainAspectRatio: false, plugins: { legend: { position: "bottom", labels: { color: "#94a3b8", font: { size: 11 }, padding: 8 } } } }} />
+              </div>
+            ) : (
+              <div className="h-64 flex items-center justify-center text-slate-400 text-sm">No expense data yet</div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Top transactions table */}
+      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+        <div className="px-5 py-4 border-b border-slate-100 dark:border-slate-800">
+          <h3 className="font-semibold text-slate-700 dark:text-slate-200">Recent Activity</h3>
+        </div>
+        {transactions.length === 0 ? (
+          <p className="text-center py-8 text-slate-400 text-sm">No transactions yet</p>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full text-left">
+              <thead className="bg-slate-50 dark:bg-slate-800/50">
+                <tr>{["Date","Description","Category","Amount"].map((h) => (
+                  <th key={h} className="px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide">{h}</th>
+                ))}</tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+                {transactions.slice(0, 10).map((tx) => (
+                  <tr key={tx.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition">
+                    <td className="px-5 py-3 text-xs text-slate-400">{tx.date}</td>
+                    <td className="px-5 py-3 text-sm font-medium text-slate-800 dark:text-slate-200">{tx.label}</td>
+                    <td className="px-5 py-3"><span className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 px-2 py-1 rounded-lg">{tx.category}</span></td>
+                    <td className={`px-5 py-3 text-sm font-bold ${tx.type === "income" ? "text-emerald-600" : "text-red-500"}`}>
+                      {tx.type === "income" ? "+" : "-"}${tx.amount.toFixed(2)}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Reports;
+</file>
+
+<file path="src/Pages/Settings.jsx">
+// src/Pages/Settings.jsx
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import {
+  FiUser, FiBell, FiShield, FiLock, FiMail,
+  FiSave, FiEye, FiEyeOff, FiSend, FiCheck,
+} from "react-icons/fi";
+import { toast } from "react-hot-toast";
+import { setCredentials } from "../Context/ContextSlices/authReader";
+import { changePasswordApi, requestChangeEmailApi, changeEmailApi } from "../api/authApi";
+
+const Section = ({ title, icon: Icon, children }) => (
+  <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+    <div className="flex items-center gap-3 px-5 py-4 border-b border-slate-100 dark:border-slate-800">
+      <span className="p-2 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 rounded-lg"><Icon size={16} /></span>
+      <h3 className="font-semibold text-slate-800 dark:text-slate-200 text-sm">{title}</h3>
+    </div>
+    <div className="p-5">{children}</div>
+  </div>
+);
+
+// const Toggle = ({ label, desc, value, onChange }) => (
+//   <div className="flex items-center justify-between py-3 border-b border-slate-100 dark:border-slate-800 last:border-0">
+//     <div>
+//       <p className="text-sm font-medium text-slate-800 dark:text-slate-200">{label}</p>
+//       {desc && <p className="text-xs text-slate-400 mt-0.5">{desc}</p>}
+//     </div>
+//     <button onClick={() => onChange(!value)} className={`relative w-11 h-6 rounded-full transition-colors ${value ? "bg-indigo-600" : "bg-slate-300 dark:bg-slate-700"}`}>
+//       <span className={`absolute top-1 w-4 h-4 bg-white rounded-full shadow transition-transform ${value ? "translate-x-6" : "translate-x-1"}`} />
+//     </button>
+//   </div>
+// );
+const Toggle = ({ label, desc, value, onChange }) => (
+  <div className="flex items-center justify-between py-3 border-b border-slate-100 dark:border-slate-800 last:border-0">
+    <div>
+      <p className="text-sm font-medium text-slate-800 dark:text-slate-200">{label}</p>
+      {desc && <p className="text-xs text-slate-400 mt-0.5">{desc}</p>}
+    </div>
+
+    <button
+      type="button" // Important to prevent form submission if this is inside a form
+      onClick={() => onChange(!value)}
+      className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full transition-colors duration-200 ease-in-out outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 ${value ? "bg-indigo-600" : "bg-slate-300 dark:bg-slate-700"
+        }`}
+    >
+      <span
+        aria-hidden="true"
+        className={`pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
+          // Ensure left-0 or translate-x-1 is clearly defined
+          value ? "translate-x-6" : "translate-x-1"
+          }`}
+      />
+    </button>
+  </div>
+);
+const ChangePasswordSection = () => {
+  const [showPw, setShowPw] = useState({ old: false, nw: false });
+  const formik = useFormik({
+    initialValues: { old_password: "", new_password: "", confirm: "" },
+    validationSchema: Yup.object({
+      old_password: Yup.string().required("Required"),
+      new_password: Yup.string().min(8, "At least 8 characters").required("Required"),
+      confirm: Yup.string().oneOf([Yup.ref("new_password")], "Passwords don't match").required("Required"),
+    }),
+    onSubmit: async (values, { setSubmitting, resetForm }) => {
+      try {
+        await changePasswordApi({ old_password: values.old_password, new_password: values.new_password });
+        toast.success("Password changed! 🔐");
+        resetForm();
+      } catch (err) {
+        toast.error(err.response?.data?.detail || "Failed to change password");
+      } finally { setSubmitting(false); }
+    },
+  });
+
+  return (
+    <Section title="Change Password" icon={FiLock}>
+      <form onSubmit={formik.handleSubmit} className="space-y-3">
+        {[
+          { name: "old_password", placeholder: "Current password", sk: "old" },
+          { name: "new_password", placeholder: "New password", sk: "nw" },
+          { name: "confirm", placeholder: "Confirm new password", sk: "nw" },
+        ].map(({ name, placeholder, sk }) => (
+          <div key={name}>
+            <div className="relative">
+              <input name={name} type={showPw[sk] ? "text" : "password"} placeholder={placeholder}
+                className={`w-full px-4 py-2.5 pr-10 rounded-xl border text-sm bg-slate-50 dark:bg-slate-800 dark:text-white outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition ${formik.touched[name] && formik.errors[name] ? "border-red-400" : "border-slate-200 dark:border-slate-700"}`}
+                {...formik.getFieldProps(name)} />
+              <button type="button" onClick={() => setShowPw((p) => ({ ...p, [sk]: !p[sk] }))} className="absolute right-3 top-3 text-slate-400 hover:text-slate-600">
+                {showPw[sk] ? <FiEyeOff size={15} /> : <FiEye size={15} />}
+              </button>
+            </div>
+            {formik.touched[name] && formik.errors[name] && <p className="text-red-500 text-xs mt-1">{formik.errors[name]}</p>}
+          </div>
+        ))}
+        <button type="submit" disabled={formik.isSubmitting}
+          className="flex items-center gap-2 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-60 text-white rounded-xl text-sm font-semibold transition">
+          <FiSave size={14} />{formik.isSubmitting ? "Saving..." : "Update Password"}
+        </button>
+      </form>
+    </Section>
+  );
+};
+
+const ChangeEmailSection = () => {
+  const dispatch = useDispatch();
+  const { user, token } = useSelector((s) => s.auth);
+  const [otpSent, setOtpSent] = useState(false);
+  const [sending, setSending] = useState(false);
+
+  const sendOtp = async () => {
+    setSending(true);
+    try {
+      await requestChangeEmailApi();
+      setOtpSent(true);
+      toast.success("OTP sent to your current email! 📧");
+    } catch (err) {
+      toast.error(err.response?.data?.detail || "Failed to send OTP");
+    } finally { setSending(false); }
+  };
+
+  const formik = useFormik({
+    initialValues: { email: "", otp: "" },
+    validationSchema: Yup.object({
+      email: Yup.string().email("Invalid email").required("Required"),
+      otp: Yup.string().required("OTP is required"),
+    }),
+    onSubmit: async (values, { setSubmitting, resetForm }) => {
+      try {
+        const { data } = await changeEmailApi({ email: values.email, otp: values.otp });
+        dispatch(setCredentials({ user: { ...user, email: values.email }, token: data.token || token }));
+        toast.success("Email changed! ✅");
+        setOtpSent(false);
+        resetForm();
+      } catch (err) {
+        const msg = (err.response?.data?.detail || "").toLowerCase();
+        if (msg.includes("otp") || msg.includes("galat")) toast.error("Invalid OTP", { icon: "🔐" });
+        else toast.error(err.response?.data?.detail || "Failed to change email");
+      } finally { setSubmitting(false); }
+    },
+  });
+
+  return (
+    <Section title="Change Email" icon={FiMail}>
+      <div className="mb-4 flex items-center gap-3 p-3 bg-slate-50 dark:bg-slate-800 rounded-xl">
+        <span className="text-xs text-slate-500 dark:text-slate-400">Current:</span>
+        <span className="text-sm font-semibold text-slate-800 dark:text-slate-200">{user?.email || "—"}</span>
+      </div>
+      {!otpSent ? (
+        <button onClick={sendOtp} disabled={sending}
+          className="flex items-center gap-2 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-60 text-white rounded-xl text-sm font-semibold transition">
+          <FiSend size={14} />{sending ? "Sending OTP..." : "Send OTP to current email"}
+        </button>
+      ) : (
+        <form onSubmit={formik.handleSubmit} className="space-y-3">
+          <div className="flex items-center gap-2 text-xs text-emerald-600 dark:text-emerald-400 font-medium mb-1">
+            <FiCheck size={14} />OTP sent to {user?.email}
+          </div>
+          {[
+            { name: "email", type: "email", placeholder: "New email address", extra: "" },
+            { name: "otp", type: "text", placeholder: "Enter OTP", extra: "font-mono tracking-widest" },
+          ].map(({ name, type, placeholder, extra }) => (
+            <div key={name}>
+              <input name={name} type={type} placeholder={placeholder} maxLength={name === "otp" ? 6 : undefined}
+                className={`w-full px-4 py-2.5 rounded-xl border text-sm bg-slate-50 dark:bg-slate-800 dark:text-white outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition ${extra} ${formik.touched[name] && formik.errors[name] ? "border-red-400" : "border-slate-200 dark:border-slate-700"}`}
+                {...formik.getFieldProps(name)} />
+              {formik.touched[name] && formik.errors[name] && <p className="text-red-500 text-xs mt-1">{formik.errors[name]}</p>}
+            </div>
+          ))}
+          <div className="flex gap-2">
+            <button type="submit" disabled={formik.isSubmitting}
+              className="flex items-center gap-2 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-60 text-white rounded-xl text-sm font-semibold transition">
+              <FiSave size={14} />{formik.isSubmitting ? "Saving..." : "Change Email"}
+            </button>
+            <button type="button" onClick={() => { setOtpSent(false); formik.resetForm(); }}
+              className="px-4 py-2.5 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 rounded-xl text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition">
+              Cancel
+            </button>
+          </div>
+        </form>
+      )}
+    </Section>
+  );
+};
+
+const Settings = () => {
+  const { user } = useSelector((s) => s.auth);
+  const [notifs, setNotifs] = useState({ email: true, push: false, weekly: true });
+
+  return (
+    <div className="space-y-5 max-w-2xl" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+      <div>
+        <h1 className="text-2xl font-bold text-slate-900 dark:text-white" style={{ fontFamily: "'Playfair Display', serif" }}>Settings</h1>
+        <p className="text-sm text-slate-500 dark:text-slate-400 mt-0.5">Manage your account</p>
+      </div>
+
+      <Section title="Profile" icon={FiUser}>
+        <div className="flex items-center gap-4">
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-400 to-cyan-400 flex items-center justify-center text-white text-2xl font-bold flex-shrink-0">
+            {(user?.email || "U")[0].toUpperCase()}
+          </div>
+          <div>
+            <p className="font-semibold text-slate-900 dark:text-white">{user?.name || "FinanceHub User"}</p>
+            <p className="text-sm text-slate-500 dark:text-slate-400">{user?.email || "—"}</p>
+            <span className="inline-block mt-1.5 text-xs bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 px-2 py-0.5 rounded-full font-medium">✓ Active</span>
+          </div>
+        </div>
+      </Section>
+
+      <ChangePasswordSection />
+      <ChangeEmailSection />
+
+      <Section title="Notifications" icon={FiBell}>
+        <Toggle label="Email Notifications" desc="Transaction alerts" value={notifs.email} onChange={(v) => setNotifs({ ...notifs, email: v })} />
+        <Toggle label="Push Notifications" desc="Browser push alerts" value={notifs.push} onChange={(v) => setNotifs({ ...notifs, push: v })} />
+        <Toggle label="Weekly Summary" desc="Weekly financial report" value={notifs.weekly} onChange={(v) => setNotifs({ ...notifs, weekly: v })} />
+      </Section>
+
+      <div className="bg-red-50 dark:bg-red-900/10 rounded-2xl border border-red-200 dark:border-red-900/40 p-5">
+        <h3 className="font-semibold text-red-700 dark:text-red-400 mb-1 flex items-center gap-2 text-sm">
+          <FiShield size={15} />Danger Zone
+        </h3>
+        <p className="text-xs text-red-500/70 mb-3">Deactivating will lock your account.</p>
+        <button onClick={() => toast.error("Contact support to deactivate.")}
+          className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl text-sm font-semibold transition">
+          Deactivate Account
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default Settings;
+</file>
+
+<file path="src/Pages/SignUp.jsx">
+// src/Pages/SignUp.jsx
+import React from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import { useNavigate, Link } from "react-router-dom";
+import { FiUser, FiMail, FiLock, FiArrowRight } from "react-icons/fi";
+import { toast } from "react-hot-toast";
+import { signupApi } from "../api/authApi";
+
+const Signup = () => {
+  const navigate = useNavigate();
+
+  const signupSchema = Yup.object().shape({
+    name:     Yup.string().required("Full name is required"),
+    email:    Yup.string().email("Invalid email").required("Required"),
+    password: Yup.string().min(8, "At least 8 characters").required("Required"),
+  });
+
+  const handleSubmit = async (values, { setSubmitting }) => {
+    try {
+      await signupApi(values);
+      toast.success("Account created! Check your email for the OTP. 📧");
+      // Pass email so VerifyEmail page knows where OTP was sent
+      navigate("/verify-email", { state: { email: values.email } });
+    } catch (err) {
+      const msg = err.response?.data?.detail || err.response?.data?.message || "Registration failed. Try again.";
+      toast.error(msg);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  return (
+    <div
+      className="flex items-center justify-center min-h-[80vh] px-4"
+      style={{ fontFamily: "'DM Sans', sans-serif" }}
+    >
+      <div className="w-full max-w-md">
+        <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+          <div className="h-1.5 bg-gradient-to-r from-cyan-500 via-violet-500 to-indigo-500" />
+
+          <div className="p-8">
+            <div className="mb-8 text-center">
+              <h2
+                className="text-3xl font-bold text-slate-900 dark:text-white mb-1"
+                style={{ fontFamily: "'Playfair Display', serif" }}
+              >
+                Create Account
+              </h2>
+              <p className="text-sm text-slate-500 dark:text-slate-400">
+                Start managing your finances today
+              </p>
+            </div>
+
+            <Formik
+              initialValues={{ name: "", email: "", password: "" }}
+              validationSchema={signupSchema}
+              onSubmit={handleSubmit}
+            >
+              {({ errors, touched, isSubmitting }) => (
+                <Form className="space-y-4">
+                  {/* Name */}
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5 uppercase tracking-wide">
+                      Full Name
+                    </label>
+                    <div className="relative">
+                      <FiUser className="absolute left-3.5 top-3.5 text-slate-400" size={16} />
+                      <Field
+                        name="name"
+                        placeholder="John Doe"
+                        className={`w-full pl-10 pr-4 py-3 rounded-xl border text-sm bg-slate-50 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 outline-none transition ${
+                          errors.name && touched.name ? "border-red-400" : "border-slate-200 dark:border-slate-700"
+                        }`}
+                      />
+                    </div>
+                    <ErrorMessage name="name" component="p" className="text-red-500 text-xs mt-1" />
+                  </div>
+
+                  {/* Email */}
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5 uppercase tracking-wide">
+                      Email
+                    </label>
+                    <div className="relative">
+                      <FiMail className="absolute left-3.5 top-3.5 text-slate-400" size={16} />
+                      <Field
+                        name="email"
+                        type="email"
+                        placeholder="you@example.com"
+                        className={`w-full pl-10 pr-4 py-3 rounded-xl border text-sm bg-slate-50 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 outline-none transition ${
+                          errors.email && touched.email ? "border-red-400" : "border-slate-200 dark:border-slate-700"
+                        }`}
+                      />
+                    </div>
+                    <ErrorMessage name="email" component="p" className="text-red-500 text-xs mt-1" />
+                  </div>
+
+                  {/* Password */}
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5 uppercase tracking-wide">
+                      Password
+                    </label>
+                    <div className="relative">
+                      <FiLock className="absolute left-3.5 top-3.5 text-slate-400" size={16} />
+                      <Field
+                        name="password"
+                        type="password"
+                        placeholder="Min. 8 characters"
+                        className={`w-full pl-10 pr-4 py-3 rounded-xl border text-sm bg-slate-50 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 outline-none transition ${
+                          errors.password && touched.password ? "border-red-400" : "border-slate-200 dark:border-slate-700"
+                        }`}
+                      />
+                    </div>
+                    <ErrorMessage name="password" component="p" className="text-red-500 text-xs mt-1" />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full py-3 mt-2 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-60 text-white rounded-xl font-semibold text-sm flex items-center justify-center gap-2 transition shadow-md shadow-indigo-200 dark:shadow-indigo-900/20"
+                  >
+                    {isSubmitting ? "Creating..." : "Create Account"}
+                    {!isSubmitting && <FiArrowRight size={16} />}
+                  </button>
+                </Form>
+              )}
+            </Formik>
+
+            <p className="mt-6 text-center text-sm text-slate-500">
+              Already have an account?{" "}
+              <Link to="/login" className="text-indigo-600 dark:text-indigo-400 font-semibold hover:underline">
+                Sign in
+              </Link>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Signup;
+</file>
+
+<file path="src/Pages/Transaction.jsx">
+// src/Pages/Transaction.jsx
+import React, { useState, useEffect, useCallback } from "react";
+import {
+  FiArrowUpRight, FiArrowDownLeft, FiRefreshCw,
+  FiPlus, FiTrash2, FiX, FiAlertTriangle, FiCheckCircle,
+} from "react-icons/fi";
+import { toast } from "react-hot-toast";
+import {
+  getTransactionsApi, createTransactionApi, deleteTransactionApi,
+  getBudgetsApi,
+} from "../api/authApi";
+
+const CATEGORIES = ["Salary","Housing","Food & Dining","Transport","Entertainment","Shopping","Utilities","Healthcare","Education","Savings","Rent","Groceries","Other"];
+
+const TYPE_STYLE = {
+  income:  { icon: "bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600", badge: "bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300", amount: "text-emerald-600" },
+  expense: { icon: "bg-red-50 dark:bg-red-900/20 text-red-500",             badge: "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300",                 amount: "text-red-500"     },
+};
+
+// ─── Budget Impact Warning shown inside modal ─────────────────
+const BudgetImpact = ({ category, amount, budgets }) => {
+  const matched = budgets.find((b) => b.category.toLowerCase() === category.toLowerCase());
+  if (!matched || !amount) return null;
+
+  const remaining = matched.budget_amount - matched.spent;
+  const afterSpend = remaining - parseFloat(amount || 0);
+  const willExceed = afterSpend < 0;
+  const willWarn   = !willExceed && afterSpend < matched.budget_amount * 0.2; // <20% left
+
+  return (
+    <div className={`rounded-xl p-3 flex items-start gap-2.5 text-xs ${
+      willExceed ? "bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800"
+      : willWarn  ? "bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800"
+      :             "bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800"
+    }`}>
+      {willExceed
+        ? <FiAlertTriangle size={14} className="text-red-500 mt-0.5 shrink-0" />
+        : willWarn
+        ? <FiAlertTriangle size={14} className="text-amber-500 mt-0.5 shrink-0" />
+        : <FiCheckCircle   size={14} className="text-emerald-500 mt-0.5 shrink-0" />
+      }
+      <div>
+        <p className={`font-semibold ${willExceed ? "text-red-700 dark:text-red-400" : willWarn ? "text-amber-700 dark:text-amber-400" : "text-emerald-700 dark:text-emerald-400"}`}>
+          {matched.category} Budget
+        </p>
+        <p className="text-slate-500 dark:text-slate-400 mt-0.5">
+          {willExceed
+            ? `This will exceed your budget by $${Math.abs(afterSpend).toFixed(2)}!`
+            : willWarn
+            ? `Only $${afterSpend.toFixed(2)} will remain (${((afterSpend/matched.budget_amount)*100).toFixed(0)}%)`
+            : `$${afterSpend.toFixed(2)} will remain after this transaction`
+          }
+        </p>
+      </div>
+    </div>
+  );
+};
+
+// ─── Add Transaction Modal ────────────────────────────────────
+const AddModal = ({ onClose, onAdded, budgets }) => {
+  const [form, setForm]   = useState({
+    date: new Date().toISOString().split("T")[0],
+    category: "Salary", label: "", amount: "", type: "income",
+  });
+  const [loading, setLoading] = useState(false);
+  const set = (k, v) => setForm((f) => ({ ...f, [k]: v }));
+
+  // When type switches to income, reset category to income-type
+  const handleTypeChange = (t) => {
+    set("type", t);
+    if (t === "income") set("category", "Salary");
+    else set("category", "Rent");
+  };
+
+  const submit = async (e) => {
+    e.preventDefault();
+    if (!form.label.trim() || !form.amount) return toast.error("Please fill all fields");
+    if (parseFloat(form.amount) <= 0) return toast.error("Amount must be greater than 0");
+    setLoading(true);
+    try {
+      const { data } = await createTransactionApi({ ...form, amount: parseFloat(form.amount) });
+      toast.success("Transaction added! ✅");
+      onAdded(data);
+      onClose();
+    } catch (err) {
+      toast.error(err.response?.data?.detail || "Failed to add transaction");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const isExpense = form.type === "expense";
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/50 backdrop-blur-sm">
+      <div className="w-full max-w-md bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+        <div className="h-1 bg-gradient-to-r from-indigo-500 to-cyan-500" />
+
+        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 dark:border-slate-800">
+          <h2 className="font-bold text-slate-900 dark:text-white" style={{ fontFamily: "'Playfair Display', serif" }}>
+            Add Transaction
+          </h2>
+          <button onClick={onClose} className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition">
+            <FiX size={20} />
+          </button>
+        </div>
+
+        <form onSubmit={submit} className="p-6 space-y-4">
+          {/* Type toggle */}
+          <div className="flex rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700">
+            {["income", "expense"].map((t) => (
+              <button key={t} type="button" onClick={() => handleTypeChange(t)}
+                className={`flex-1 py-2.5 text-sm font-semibold capitalize transition ${
+                  form.type === t
+                    ? t === "income" ? "bg-emerald-500 text-white" : "bg-red-500 text-white"
+                    : "bg-slate-50 dark:bg-slate-800 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-700"
+                }`}>
+                {t === "income" ? "💰 Income" : "💸 Expense"}
+              </button>
+            ))}
+          </div>
+
+          {/* Label */}
+          <div>
+            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Description</label>
+            <input
+              value={form.label} onChange={(e) => set("label", e.target.value)}
+              placeholder={isExpense ? "e.g. Monthly Rent" : "e.g. Monthly Salary"}
+              className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm dark:text-white outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition"
+            />
+          </div>
+
+          {/* Amount + Category */}
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Amount ($)</label>
+              <input
+                type="number" min="0.01" step="0.01"
+                value={form.amount} onChange={(e) => set("amount", e.target.value)}
+                placeholder="0.00"
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm dark:text-white outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition"
+              />
+            </div>
+            <div>
+              <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Category</label>
+              <select
+                value={form.category} onChange={(e) => set("category", e.target.value)}
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm dark:text-white outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition">
+                {CATEGORIES.map((c) => <option key={c}>{c}</option>)}
+              </select>
+            </div>
+          </div>
+
+          {/* Date */}
+          <div>
+            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">Date</label>
+            <input
+              type="date" value={form.date} onChange={(e) => set("date", e.target.value)}
+              className="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm dark:text-white outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition"
+            />
+          </div>
+
+          {/* Live budget impact — only for expenses */}
+          {isExpense && (
+            <BudgetImpact category={form.category} amount={form.amount} budgets={budgets} />
+          )}
+
+          <button type="submit" disabled={loading}
+            className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-60 text-white rounded-xl font-semibold text-sm flex items-center justify-center gap-2 transition shadow-sm shadow-indigo-200 dark:shadow-none">
+            {loading
+              ? <><svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"/></svg>Adding...</>
+              : <><FiPlus size={16} />Add Transaction</>
+            }
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+// ─── Budget Mini Panel (shown below transaction list) ─────────
+const BudgetPanel = ({ budgets, transactions }) => {
+  if (budgets.length === 0) return null;
+
+  // Re-calculate spent from actual transactions (front-end live view)
+  const liveSpent = (category) =>
+    transactions
+      .filter((t) => t.type === "expense" && t.category.toLowerCase() === category.toLowerCase())
+      .reduce((s, t) => s + t.amount, 0);
+
+  return (
+    <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+      <div className="px-5 py-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+        <div>
+          <h3 className="font-semibold text-slate-800 dark:text-slate-200" style={{ fontFamily: "'Playfair Display', serif" }}>
+            Budget Impact
+          </h3>
+          <p className="text-xs text-slate-400 mt-0.5">How your transactions affect each budget</p>
+        </div>
+      </div>
+
+      <div className="p-5 space-y-4">
+        {budgets.map((b) => {
+          const spent    = liveSpent(b.category);
+          const pct      = b.budget_amount > 0 ? (spent / b.budget_amount) * 100 : 0;
+          const over     = spent > b.budget_amount;
+          const remaining = Math.max(0, b.budget_amount - spent);
+          const warn     = !over && pct > 80;
+
+          return (
+            <div key={b.id}>
+              <div className="flex items-center justify-between mb-1.5">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: b.color }} />
+                  <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{b.category}</span>
+                  {over && (
+                    <span className="text-xs bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 px-2 py-0.5 rounded-full font-medium">
+                      Over!
+                    </span>
+                  )}
+                  {warn && !over && (
+                    <span className="text-xs bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 px-2 py-0.5 rounded-full font-medium">
+                      Almost full
+                    </span>
+                  )}
+                </div>
+                <div className="text-right">
+                  <span className={`text-sm font-bold ${over ? "text-red-500" : warn ? "text-amber-500" : "text-slate-700 dark:text-slate-300"}`}>
+                    ${spent.toFixed(2)}
+                  </span>
+                  <span className="text-xs text-slate-400"> / ${b.budget_amount.toFixed(2)}</span>
+                </div>
+              </div>
+
+              <div className="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                <div
+                  className="h-full rounded-full transition-all duration-500"
+                  style={{
+                    width: `${Math.min(pct, 100)}%`,
+                    backgroundColor: over ? "#ef4444" : warn ? "#f59e0b" : b.color,
+                  }}
+                />
+              </div>
+
+              <p className="text-xs text-slate-400 mt-1">
+                {over
+                  ? `$${(spent - b.budget_amount).toFixed(2)} over budget`
+                  : `$${remaining.toFixed(2)} remaining · ${(100 - pct).toFixed(0)}% free`
+                }
+              </p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+// ─── Main Transaction Page ────────────────────────────────────
+const Transaction = () => {
+  const [transactions, setTransactions] = useState([]);
+  const [budgets,      setBudgets]      = useState([]);
+  const [loading,      setLoading]      = useState(true);
+  const [showModal,    setShowModal]    = useState(false);
+  const [filter,       setFilter]       = useState("all");
+  const [search,       setSearch]       = useState("");
+
+  const loadAll = useCallback(async () => {
+    setLoading(true);
+    try {
+      const [txRes, budgetRes] = await Promise.all([getTransactionsApi(), getBudgetsApi()]);
+      setTransactions(txRes.data);
+      setBudgets(budgetRes.data);
+    } catch {
+      toast.error("Failed to load data");
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => { loadAll(); }, [loadAll]);
+
+  // After adding a transaction, re-fetch budgets so spent values update
+  const handleAdded = async (tx) => {
+    setTransactions((prev) => [tx, ...prev]);
+    if (tx.type === "expense") {
+      try {
+        const { data } = await getBudgetsApi();
+        setBudgets(data);
+      } catch { /* silent */ }
+    }
+  };
+
+  // After deleting, re-fetch budgets too
+  const handleDelete = async (id) => {
+    const tx = transactions.find((t) => t.id === id);
+    try {
+      await deleteTransactionApi(id);
+      setTransactions((t) => t.filter((x) => x.id !== id));
+      toast.success("Transaction deleted");
+      if (tx?.type === "expense") {
+        const { data } = await getBudgetsApi();
+        setBudgets(data);
+      }
+    } catch {
+      toast.error("Failed to delete");
+    }
+  };
+
+  const filtered = transactions
+    .filter((t) => filter === "all" || t.type === filter)
+    .filter((t) =>
+      t.label?.toLowerCase().includes(search.toLowerCase()) ||
+      t.category?.toLowerCase().includes(search.toLowerCase())
+    );
+
+  const totalIncome  = transactions.filter((t) => t.type === "income").reduce((s, t) => s + t.amount, 0);
+  const totalExpense = transactions.filter((t) => t.type === "expense").reduce((s, t) => s + t.amount, 0);
+  const net          = totalIncome - totalExpense;
+
+  return (
+    <div className="space-y-5" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+      {showModal && (
+        <AddModal
+          onClose={() => setShowModal(false)}
+          onAdded={handleAdded}
+          budgets={budgets}
+        />
+      )}
+
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div>
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-white" style={{ fontFamily: "'Playfair Display', serif" }}>
+            Transactions
+          </h1>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-0.5">{transactions.length} total records</p>
+        </div>
+        <div className="flex items-center gap-2">
+          <button onClick={loadAll}
+            className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+            <FiRefreshCw size={16} className={loading ? "animate-spin" : ""} />
+          </button>
+          <button onClick={() => setShowModal(true)}
+            className="flex items-center gap-2 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-sm font-semibold transition shadow-sm shadow-indigo-200 dark:shadow-none">
+            <FiPlus size={16} /> Add New
+          </button>
+        </div>
+      </div>
+
+      {/* Summary cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {[
+          { label: "Total Income",   value: totalIncome,  color: "text-emerald-600", bg: "bg-emerald-50 dark:bg-emerald-900/20",  prefix: "+" },
+          { label: "Total Expenses", value: totalExpense, color: "text-red-500",     bg: "bg-red-50 dark:bg-red-900/20",           prefix: "-" },
+          { label: "Net Balance",    value: Math.abs(net), color: net >= 0 ? "text-indigo-600" : "text-red-500", bg: "bg-indigo-50 dark:bg-indigo-900/20", prefix: net >= 0 ? "+" : "-" },
+        ].map((s) => (
+          <div key={s.label} className={`${s.bg} rounded-2xl p-4`}>
+            <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">{s.label}</p>
+            <p className={`text-2xl font-bold mt-1 ${s.color}`}>{s.prefix}${s.value.toFixed(2)}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Two-column layout: table + budget panel */}
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-5">
+
+        {/* Transaction table — takes 2/3 */}
+        <div className="xl:col-span-2 space-y-4">
+          {/* Filter + Search */}
+          <div className="flex flex-col sm:flex-row gap-3">
+            <input
+              value={search} onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search by description or category..."
+              className="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm dark:text-white outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition"
+            />
+            <div className="flex rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900">
+              {["all", "income", "expense"].map((f) => (
+                <button key={f} onClick={() => setFilter(f)}
+                  className={`px-4 py-2.5 text-sm font-medium capitalize transition ${
+                    filter === f ? "bg-indigo-600 text-white" : "text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800"
+                  }`}>
+                  {f}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+            {loading ? (
+              <div className="p-12 text-center text-slate-400 text-sm">Loading transactions...</div>
+            ) : filtered.length === 0 ? (
+              <div className="p-12 text-center text-slate-400 text-sm">No transactions found</div>
+            ) : (
+              <div className="overflow-x-auto">
+                <table className="w-full text-left">
+                  <thead className="bg-slate-50 dark:bg-slate-800/60">
+                    <tr>
+                      {["Transaction", "Category", "Date", "Amount", ""].map((h) => (
+                        <th key={h} className="px-5 py-3.5 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+                    {filtered.map((tx) => {
+                      const style = TYPE_STYLE[tx.type];
+                      return (
+                        <tr key={tx.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition group">
+                          <td className="px-5 py-3.5">
+                            <div className="flex items-center gap-3">
+                              <div className={`p-2 rounded-xl ${style.icon}`}>
+                                {tx.type === "income" ? <FiArrowDownLeft size={14} /> : <FiArrowUpRight size={14} />}
+                              </div>
+                              <p className="text-sm font-medium text-slate-800 dark:text-slate-200">{tx.label}</p>
+                            </div>
+                          </td>
+                          <td className="px-5 py-3.5">
+                            <span className={`text-xs px-2.5 py-1 rounded-lg font-medium ${style.badge}`}>{tx.category}</span>
+                          </td>
+                          <td className="px-5 py-3.5 text-xs text-slate-400">{tx.date}</td>
+                          <td className={`px-5 py-3.5 font-bold text-sm ${style.amount}`}>
+                            {tx.type === "income" ? "+" : "-"}${tx.amount.toFixed(2)}
+                          </td>
+                          <td className="px-5 py-3.5">
+                            <button onClick={() => handleDelete(tx.id)}
+                              className="opacity-0 group-hover:opacity-100 text-slate-300 dark:text-slate-600 hover:text-red-500 dark:hover:text-red-400 transition">
+                              <FiTrash2 size={15} />
+                            </button>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Budget panel — takes 1/3 */}
+        <div className="xl:col-span-1">
+          {loading ? (
+            <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8 text-center text-slate-400 text-sm">
+              Loading budgets...
+            </div>
+          ) : budgets.length === 0 ? (
+            <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8 text-center">
+              <p className="text-slate-500 dark:text-slate-400 font-medium text-sm">No budgets set</p>
+              <p className="text-slate-400 text-xs mt-1">
+                Go to the <a href="/budget" className="text-indigo-500 hover:underline">Budget page</a> to add limits
+              </p>
+            </div>
+          ) : (
+            <BudgetPanel budgets={budgets} transactions={transactions} />
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Transaction;
+</file>
+
+<file path="src/Pages/VerifyEmail.jsx">
+// src/Pages/VerifyEmail.jsx
+// User lands here after signup. Email is passed via router state.
+import React from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { useNavigate, useLocation, Link } from "react-router-dom";
+import { FiHash, FiArrowRight, FiMail } from "react-icons/fi";
+import { toast } from "react-hot-toast";
+import { verifyEmailApi } from "../api/authApi";
+
+const VerifyEmail = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Email is passed from Signup page: navigate("/verify-email", { state: { email } })
+  const email = location.state?.email || "";
+
+  const formik = useFormik({
+    initialValues: { otp: "" },
+    validationSchema: Yup.object({
+      otp: Yup.string()
+        .matches(/^[a-zA-Z0-9]{6}$/, "OTP must be exactly 6 characters")
+        .required("OTP is required"),
+    }),
+    onSubmit: async (values, { setSubmitting }) => {
+      try {
+        await verifyEmailApi({ email, otp: values.otp });
+        toast.success("Email verified! You can now sign in. ✅");
+        navigate("/login");
+      } catch (err) {
+        const message = (err.response?.data?.detail || "").toLowerCase();
+
+        if (message.includes("invalid") || message.includes("wrong") || message.includes("galat")) {
+          toast.error("Invalid OTP. Please check and try again.", { icon: "🔐" });
+        } else if (message.includes("not exist") || message.includes("not found")) {
+          toast.error("Account not found. Please sign up first.", { icon: "👤" });
+        } else {
+          toast.error(err.response?.data?.detail || "Verification failed. Try again.");
+        }
+      } finally {
+        setSubmitting(false);
+      }
+    },
+  });
+
+  return (
+    <div
+      className="flex items-center justify-center min-h-[80vh] px-4"
+      style={{ fontFamily: "'DM Sans', sans-serif" }}
+    >
+      <div className="w-full max-w-md">
+        <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+          <div className="h-1.5 bg-gradient-to-r from-cyan-500 via-violet-500 to-indigo-500" />
+
+          <div className="p-8">
+            {/* Icon */}
+            <div className="flex justify-center mb-5">
+              <div className="w-16 h-16 rounded-2xl bg-indigo-50 dark:bg-indigo-900/20 flex items-center justify-center">
+                <FiMail size={32} className="text-indigo-600 dark:text-indigo-400" />
+              </div>
+            </div>
+
+            <div className="text-center mb-8">
+              <h2
+                className="text-3xl font-bold text-slate-900 dark:text-white mb-2"
+                style={{ fontFamily: "'Playfair Display', serif" }}
+              >
+                Verify Your Email
+              </h2>
+              <p className="text-sm text-slate-500 dark:text-slate-400">
+                We sent a 6-character OTP to
+              </p>
+              {email && (
+                <p className="text-sm font-semibold text-indigo-600 dark:text-indigo-400 mt-1">
+                  {email}
+                </p>
+              )}
+            </div>
+
+            <form onSubmit={formik.handleSubmit} className="space-y-5">
+              <div>
+                <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5 uppercase tracking-wide">
+                  Enter OTP
+                </label>
+                <div className="relative">
+                  <FiHash className="absolute left-3.5 top-3.5 text-slate-400" size={16} />
+                  <input
+                    name="otp"
+                    type="text"
+                    inputMode="text"
+                    maxLength={6}
+                    placeholder="_ _ _ _ _ _"
+                    autoComplete="one-time-code"
+                    autoFocus
+                    className={`w-full pl-10 pr-4 py-3 rounded-xl border text-sm bg-slate-50 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 outline-none transition font-mono tracking-[0.6em] text-center ${
+                      formik.touched.otp && formik.errors.otp
+                        ? "border-red-400"
+                        : "border-slate-200 dark:border-slate-700"
+                    }`}
+                    {...formik.getFieldProps("otp")}
+                  />
+                </div>
+                {formik.touched.otp && formik.errors.otp && (
+                  <p className="text-red-500 text-xs mt-1">{formik.errors.otp}</p>
+                )}
+              </div>
+
+              <button
+                type="submit"
+                disabled={formik.isSubmitting}
+                className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-60 text-white rounded-xl font-semibold text-sm flex items-center justify-center gap-2 transition shadow-md shadow-indigo-200 dark:shadow-indigo-900/20"
+              >
+                {formik.isSubmitting ? (
+                  <>
+                    <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                    </svg>
+                    Verifying...
+                  </>
+                ) : (
+                  <> Verify Email <FiArrowRight size={16} /> </>
+                )}
+              </button>
+            </form>
+
+            <p className="mt-6 text-center text-xs text-slate-400">
+              Didn&apos;t receive it? Check spam or{" "}
+              <Link to="/signup" className="text-indigo-600 dark:text-indigo-400 font-semibold hover:underline">
+                sign up again
+              </Link>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default VerifyEmail;
+</file>
+
+<file path="tailwind.config.js">
+/** @type {import('tailwindcss').Config} */
+export default {
+  darkMode: 'class', // <--- THIS IS THE KEY
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+</file>
+
+<file path="vite.config.js">
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react(),
+    tailwindcss(),
+  ],
+})
+</file>
+
+</files>
